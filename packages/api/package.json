@@ -1,0 +1,21 @@
+{
+  "name": "@claude-impact-lab/api",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@claude-impact-lab/db": "workspace:*",
+    "@trpc/client": "catalog:",
+    "@trpc/server": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@claude-impact-lab/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

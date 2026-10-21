@@ -8,6 +8,7 @@ A hackathon template for developers and agents. Keep context in the repository, 
 - [Hackathon playbook](docs/hackathon_playbook.md): a flexible thought scaffold for setup, ideas, planning, building, and the demo.
 - [Demo data availability](docs/demo-data-availability.md): fetchable bank data, derived insights, and realistic mock options for Danske Bank, Revolut, and Saxo. [Detailed API reference](docs/open-banking-data-support.md).
 - [AGENTS.md](AGENTS.md): coding guidelines; adapt to the project as needed.
+- [Stack and run notes](docs/stack.md): the generated Better-T-Stack app (Next.js PWA in `apps/web`, tRPC in `packages/api`, Drizzle + Turso in `packages/db`, shadcn/ui in `packages/ui`). Quick start: `pnpm install`, create `apps/web/.env` (see `apps/web/.env.schema`), `pnpm -C packages/db db:push`, `pnpm dev` (http://localhost:3001). Progress: [status.md](status.md).
 
 ## Get started
 

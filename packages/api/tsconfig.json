@@ -1,0 +1,6 @@
+{
+  "extends": "@claude-impact-lab/config/tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true
+  }
+}

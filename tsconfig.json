@@ -1,0 +1,3 @@
+{
+  "extends": "@claude-impact-lab/config/tsconfig.base.json"
+}

@@ -1,0 +1,31 @@
+// Better-T-Stack project metadata
+//
+// Keep this file to use the `add` command.
+// Add addons: pnpm dlx create-better-t-stack@latest add
+//
+// Docs: https://better-t-stack.dev/docs
+// Stack Builder: https://better-t-stack.dev/new
+
+{
+  "$schema": "https://r2.better-t-stack.dev/schema.json",
+  "version": "3.47.0",
+  "createdAt": "2026-10-21T16:02:37.147Z",
+  "reproducibleCommand": "pnpm create better-t-stack@latest . --frontend next --backend self --runtime none --database sqlite --orm drizzle --api trpc --auth none --payments none --addons turborepo --examples none --db-setup turso --manual-db --web-deploy vercel --server-deploy none --no-git --package-manager pnpm --install",
+  "dbSetupOptions": {
+    "mode": "manual",
+  },
+  "database": "sqlite",
+  "orm": "drizzle",
+  "backend": "self",
+  "runtime": "none",
+  "frontend": ["next"],
+  "addons": ["turborepo"],
+  "examples": [],
+  "auth": "none",
+  "payments": "none",
+  "packageManager": "pnpm",
+  "dbSetup": "turso",
+  "api": "trpc",
+  "webDeploy": "vercel",
+  "serverDeploy": "none",
+}
