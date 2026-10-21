@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>[Project name] | Hackathon presentation</title>
+  <!--
+    Edit only this file: the title, the theme below, and the <section data-slide> blocks.
+    Duplicate, reorder, or delete sections; keep heading IDs unique. Replace all instructional copy.
+    deck.css and deck.js provide layout, navigation, fullscreen, touch, help, and print. Keep them next to this file.
+    Controls: Left/Right, PageUp/PageDown, Home/End; F for fullscreen; ? for help. Print shows all slides.
+    Images: use relative paths and keep them with the deck, or embed a data URL.
+  -->
+  <link rel="stylesheet" href="deck.css">
+  <style>
+    /* Theme: change colors and font here. */
+    :root {
+      --paper: #f3f1e9;
+      --ink: #203430;
+      --muted: #52625b;
+      --accent: #17634a;
+      --line: #c7cec3;
+      --dark: #1e3630;
+      --light: #e5efb9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+  </style>
+  <script src="deck.js" defer></script>
+</head>
+<body>
+  <main aria-label="Presentation">
+    <!-- TITLE: replace the project name, promise, and presenter details. -->
+    <section class="slide slide--dark" data-slide aria-labelledby="title-heading">
+      <p class="eyebrow">[Event name] / [Date]</p>
+      <div>
+        <h1 id="title-heading">[Project name]</h1>
+        <p class="lead">Help [specific people] achieve [useful outcome].</p>
+      </div>
+      <div class="rule meta">
+        <span>[Team or presenter]</span>
+        <span>Replace these prompts with your own story.</span>
+      </div>
+    </section>
+
+    <!-- PROBLEM: name a person, a moment, and the cost of the current workaround. -->
+    <section class="slide" data-slide aria-labelledby="problem-heading">
+      <p class="eyebrow">The problem</p>
+      <div class="columns">
+        <div>
+          <h2 id="problem-heading" class="measure">[Who struggles, and when?]</h2>
+          <p class="lead">Describe one specific situation your audience can recognize.</p>
+        </div>
+        <div class="card card--tint">
+          <p class="eyebrow">The current workaround</p>
+          <h3>[What does this person do today?]</h3>
+          <p>[Explain the effort, delay, or missed opportunity. Use an observed example if you have one.]</p>
+          <p class="note">If this is an assumption, label it. Use a quote only with a real source and permission where needed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT: make the proposed workflow understandable before showing the app. -->
+    <section class="slide" data-slide aria-labelledby="product-heading">
+      <p class="eyebrow">The product</p>
+      <div class="columns">
+        <div>
+          <h2 id="product-heading" class="measure">[One useful change in their day.]</h2>
+          <p class="lead">Explain what your project helps this person do.</p>
+          <p class="note">Keep the claim within what your prototype can demonstrate.</p>
+        </div>
+        <ol class="steps">
+          <li><strong>[Start with a real need]</strong><span>What does the person bring to the workflow?</span></li>
+          <li><strong>[Take the key action]</strong><span>What do they do in your product?</span></li>
+          <li><strong>[Receive a useful result]</strong><span>What changes for them afterward?</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- DEMO: this optional preview can be a product screen or a landing page.
+         Replace the entire .preview-slot div with, for example:
+         <img src="data:image/png;base64,..." alt="Describe the actual screen and its relevant state.">
+         Use a real screenshot. Do not leave a broken src or invent a product image.
+         Add a real link if useful, for example:
+         <a href="https://YOUR-REAL-URL" target="_blank" rel="noopener noreferrer">Open the live demo</a>
+         Replace the URL before uncommenting. Delete this slide if no preview helps.
+    -->
+    <section class="slide" data-slide aria-labelledby="demo-heading">
+      <p class="eyebrow">The demo</p>
+      <div class="columns">
+        <div>
+          <h2 id="demo-heading">[Show the task end to end.]</h2>
+          <p>[Set the scene, perform the key action, and point out the result.]</p>
+          <p class="note">Replace the slot with a product or landing-page screenshot. Add a real link if the audience should open it.</p>
+        </div>
+        <figure class="preview">
+          <div class="preview-slot">
+            <span>Screenshot placeholder</span>
+            <strong>Your product or landing page</strong>
+            <p>Replace this box with an image, or remove it.</p>
+          </div>
+          <figcaption>[Describe the screen. Mark any simulated behavior or unfinished step.]</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- EVIDENCE: replace prompts only with attributable findings. No invented metrics. -->
+    <section class="slide" data-slide aria-labelledby="evidence-heading">
+      <p class="eyebrow">What we know</p>
+      <div>
+        <h2 id="evidence-heading">[What did you learn?]</h2>
+        <p class="lead">Separate observed results from the next assumption to test.</p>
+      </div>
+      <div class="columns columns--equal">
+        <div class="card">
+          <span class="evidence-label">Evidence to add</span>
+          <h3>[One finding you can support]</h3>
+          <p>[State what happened, who or what you observed, and when. Include a source or method.]</p>
+          <p class="note">If you have no user evidence yet, say so. A working demo proves behavior, not demand or impact.</p>
+        </div>
+        <div class="card card--tint">
+          <span class="evidence-label">Still untested</span>
+          <h3>[The next uncertainty]</h3>
+          <p>[Name the person you will test with, the task, and the result that would change your decision.]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING: replace the URL text with a real anchor, or remove it.
+         <a class="closing-link" href="https://YOUR-REAL-URL" target="_blank" rel="noopener noreferrer">Your readable URL</a>
+         Keep the visible URL readable for an audience without a clickable screen.
+    -->
+    <section class="slide slide--dark" data-slide aria-labelledby="closing-heading">
+      <p class="eyebrow">The next step</p>
+      <div>
+        <h2 id="closing-heading" class="measure">[Make one clear ask.]</h2>
+        <p class="lead">[Invite the audience to try the project, join a test, or help answer a specific question.]</p>
+      </div>
+      <div class="rule">
+        <p class="closing-link">[Your real project URL]</p>
+        <p class="note">[Team name or contact]</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

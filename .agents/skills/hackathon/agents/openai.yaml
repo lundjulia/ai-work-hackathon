@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hackathon"
+  short_description: "Coordinate hackathon delivery across agent threads"
+  default_prompt: "Use $hackathon to advance this hackathon as the main thread or an assigned domain worker, keeping shared requirements, status, and integration aligned."

@@ -1,0 +1,42 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build and framework output
+dist
+build
+out
+.next
+.expo
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env*.local
+
+# Tooling
+.turbo
+.vercel
+.cache
+coverage
+
+# Xcode and Swift
+xcuserdata/
+DerivedData/
+.build/
+
+# Local data
+*.db
+*.db-*
+
+# Editors and OS
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea
+*.swp
+.DS_Store
+
+# Logs
+*.log
