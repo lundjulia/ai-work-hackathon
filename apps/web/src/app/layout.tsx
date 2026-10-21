@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "../index.css";
-import Header from "@/components/header";
 import Providers from "@/components/providers";
+import ServiceWorkerRegistration from "@/components/service-worker-registration";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +16,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "claude-impact-lab",
-  description: "claude-impact-lab",
+  title: "Autopilot",
+  description: "Money on autopilot: your banks, checked daily by an agent.",
+  applicationName: "Autopilot",
+  appleWebApp: { capable: true, title: "Autopilot", statusBarStyle: "black-translucent" },
+  icons: { apple: "/apple-touch-icon.png" },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0f172a",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -27,13 +37,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} bg-muted antialiased`}>
         <Providers>
-          <div className="grid grid-rows-[auto_1fr] h-svh">
-            <Header />
+          {/* Phone-width column, centered on desktop. */}
+          <div className="mx-auto flex h-dvh w-full max-w-md flex-col bg-background pt-[env(safe-area-inset-top)] shadow-sm">
             {children}
           </div>
         </Providers>
+        <ServiceWorkerRegistration />
       </body>
     </html>
   );

@@ -13,7 +13,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
       <QueryClientProvider client={queryClient}>
         {children}
-        <ReactQueryDevtools />
+        <ReactQueryDevtools buttonPosition="top-right" />
       </QueryClientProvider>
       <Toaster richColors />
     </ThemeProvider>
