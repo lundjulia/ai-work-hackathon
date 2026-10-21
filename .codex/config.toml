@@ -1,0 +1,3 @@
+# provenance: Unvetted Synthetic
+[mcp_servers.google-drive]
+url = "https://drivemcp.googleapis.com/mcp/v1"

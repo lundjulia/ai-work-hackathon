@@ -1,11 +1,12 @@
 # hckthn
 
-https://drive.google.com/drive/folders/1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi?usp=sharing
+[Shared Google Drive folder](https://drive.google.com/drive/folders/1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi?usp=sharing). [Google Drive MCP setup](docs/google-drive-mcp.md) for agent access.
 
 A hackathon template for developers and agents. Keep context in the repository, get started quickly, and adapt as the idea takes shape.
 
 - [Hackathon skill](.agents/skills/hackathon/SKILL.md): coordinate main and worker threads, with guides for the [app scaffold and Vercel deploy](.agents/skills/hackathon/references/scaffold.md), [branding](.agents/skills/hackathon/references/branding.md), and a reusable HTML presentation.
 - [Hackathon playbook](docs/hackathon_playbook.md): a flexible thought scaffold for setup, ideas, planning, building, and the demo.
+- [Demo data availability](docs/demo-data-availability.md): fetchable bank data, derived insights, and realistic mock options for Danske Bank, Revolut, and Saxo. [Detailed API reference](docs/open-banking-data-support.md).
 - [AGENTS.md](AGENTS.md): coding guidelines; adapt to the project as needed.
 
 ## Get started
