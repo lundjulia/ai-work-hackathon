@@ -1,0 +1,602 @@
+[
+ {
+  "chain": "Netto",
+  "product": "Netto hakket oksekød 8-12%",
+  "price": 35,
+  "kg": 0.4,
+  "validFrom": "2026-10-16T22:00:00+0000",
+  "validTo": "2026-10-23T21:59:59+0000",
+  "category": "oksekod",
+  "pricePerKg": 87.5
+ },
+ {
+  "chain": "Rema 1000",
+  "product": "REMA 1000 Hakket dansk oksekød 8-12% eller ungkvæg i tern",
+  "price": 39,
+  "kg": 0.3,
+  "validFrom": "2026-10-17T22:00:00+0000",
+  "validTo": "2026-10-24T21:59:59+0000",
+  "category": "oksekod",
+  "pricePerKg": 130
+ },
+ {
+  "chain": "Lidl",
+  "product": "MADVÆRKET Hakket oksekød",
+  "price": 72.95,
+  "kg": 0.8,
+  "validFrom": "2026-05-02T22:00:00+0000",
+  "validTo": "2026-12-31T22:59:59+0000",
+  "category": "oksekod",
+  "pricePerKg": 91.19
+ },
+ {
+  "chain": "Føtex",
+  "product": "MesterHakket grise eller oksekød",
+  "price": 29,
+  "kg": 0.4,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "oksekod",
+  "pricePerKg": 72.5
+ },
+ {
+  "chain": "Føtex",
+  "product": "Røget bacon, hakket okse eller grise/kalvekød",
+  "price": 69,
+  "kg": 0.7,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "svinekod",
+  "pricePerKg": 98.57
+ },
+ {
+  "chain": "Bilka",
+  "product": "Hakket oksekød eller Ludvig mignon af oksetyksteg",
+  "price": 109,
+  "kg": 0.6,
+  "validFrom": "2026-10-22T22:00:00+0000",
+  "validTo": "2026-10-29T22:59:59+0000",
+  "category": "oksekod",
+  "pricePerKg": 181.67
+ },
+ {
+  "chain": "Bilka",
+  "product": "Hakket grise/kalvekød eller mørbrad af gris",
+  "price": 119,
+  "kg": 2.2,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "svinekod",
+  "pricePerKg": 54.09
+ },
+ {
+  "chain": "Netto",
+  "product": "Velsmag hakket dansk grise- og kalvekød 8-12%",
+  "price": 18,
+  "kg": 0.4,
+  "validFrom": "2026-10-23T22:00:00+0000",
+  "validTo": "2026-10-30T22:59:59+0000",
+  "category": "svinekod",
+  "pricePerKg": 45
+ },
+ {
+  "chain": "Lidl",
+  "product": "MADVÆRKET Hakket grisekød",
+  "price": 49,
+  "kg": 1.2,
+  "validFrom": "2026-10-17T22:00:00+0000",
+  "validTo": "2026-10-24T21:59:59+0000",
+  "category": "svinekod",
+  "pricePerKg": 40.83
+ },
+ {
+  "chain": "Rema 1000",
+  "product": "REMA 1000 Frilandsgris Hakket grisekød 8-12%",
+  "price": 25,
+  "kg": 0.4,
+  "validFrom": "2026-10-17T22:00:00+0000",
+  "validTo": "2026-10-24T21:59:59+0000",
+  "category": "svinekod",
+  "pricePerKg": 62.5
+ },
+ {
+  "chain": "Føtex",
+  "product": "Rose hel kylling eller Danpo hakket kylling",
+  "price": 39,
+  "kg": 1,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "kylling",
+  "pricePerKg": 39
+ },
+ {
+  "chain": "Netto",
+  "product": "Danske kyllingeunderlår eller -overlår",
+  "price": 10,
+  "kg": 0.3,
+  "validFrom": "2026-10-16T22:00:00+0000",
+  "validTo": "2026-10-23T21:59:59+0000",
+  "category": "kylling",
+  "pricePerKg": 33.33
+ },
+ {
+  "chain": "Rema 1000",
+  "product": "REMA 1000 Dansk kyllingebrystfilet eller dansk inderfilet",
+  "price": 49,
+  "kg": 0.6,
+  "validFrom": "2026-10-24T22:00:00+0000",
+  "validTo": "2026-10-31T22:59:59+0000",
+  "category": "kylling",
+  "pricePerKg": 81.67
+ },
+ {
+  "chain": "Bilka",
+  "product": "Dansk hel kylling",
+  "price": 49,
+  "kg": 1.45,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "kylling",
+  "pricePerKg": 33.79
+ },
+ {
+  "chain": "Lidl",
+  "product": "ROSE Hel kylling",
+  "price": 49.95,
+  "kg": 1.6,
+  "validFrom": "2026-09-29T22:00:00+0000",
+  "validTo": "2026-12-31T22:59:59+0000",
+  "category": "kylling",
+  "pricePerKg": 31.22
+ },
+ {
+  "chain": "Rema 1000",
+  "product": "REMA 1000 Laksefilet",
+  "price": 89,
+  "kg": 0.6,
+  "validFrom": "2026-10-17T22:00:00+0000",
+  "validTo": "2026-10-24T21:59:59+0000",
+  "category": "laks",
+  "pricePerKg": 148.33
+ },
+ {
+  "chain": "Rema 1000",
+  "product": "REMA 1000 Danske laksefileter",
+  "price": 39,
+  "kg": 0.225,
+  "validFrom": "2026-10-24T22:00:00+0000",
+  "validTo": "2026-10-31T22:59:59+0000",
+  "category": "laks",
+  "pricePerKg": 173.33
+ },
+ {
+  "chain": "Netto",
+  "product": "Velsmag lakseside",
+  "price": 79,
+  "kg": 0.6,
+  "validFrom": "2026-10-23T22:00:00+0000",
+  "validTo": "2026-10-30T22:59:59+0000",
+  "category": "laks",
+  "pricePerKg": 131.67
+ },
+ {
+  "chain": "Lidl",
+  "product": "DELUXE Vildlaksefilet",
+  "price": 69,
+  "kg": 0.7,
+  "validFrom": "2026-10-21T22:00:00+0000",
+  "validTo": "2026-10-24T21:59:59+0000",
+  "category": "laks",
+  "pricePerKg": 98.57
+ },
+ {
+  "chain": "Føtex",
+  "product": "Fersk laks",
+  "price": 45,
+  "kg": 0.225,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "laks",
+  "pricePerKg": 200
+ },
+ {
+  "chain": "Bilka",
+  "product": "Rummo pasta",
+  "price": 16,
+  "kg": 0.5,
+  "validFrom": "2026-10-22T22:00:00+0000",
+  "validTo": "2026-10-29T22:59:59+0000",
+  "category": "pasta",
+  "pricePerKg": 32
+ },
+ {
+  "chain": "Netto",
+  "product": "Zelected pasta tortiglioni",
+  "price": 15,
+  "kg": 0.5,
+  "validFrom": "2026-10-16T22:00:00+0000",
+  "validTo": "2026-10-23T21:59:59+0000",
+  "category": "pasta",
+  "pricePerKg": 30
+ },
+ {
+  "chain": "Lidl",
+  "product": "COMBINO Fusilli, penne rigate eller suppehorn",
+  "price": 5.95,
+  "kg": 0.5,
+  "validFrom": "2026-09-29T22:00:00+0000",
+  "validTo": "2026-12-31T22:59:59+0000",
+  "category": "pasta",
+  "pricePerKg": 11.9
+ },
+ {
+  "chain": "Føtex",
+  "product": "Fettuccine",
+  "price": 9,
+  "kg": 0.25,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "pasta",
+  "pricePerKg": 36
+ },
+ {
+  "chain": "Lidl",
+  "product": "COMBINO Spaghetti",
+  "price": 8.95,
+  "kg": 1,
+  "validFrom": "2026-09-29T22:00:00+0000",
+  "validTo": "2026-12-31T22:59:59+0000",
+  "category": "pasta",
+  "pricePerKg": 8.95
+ },
+ {
+  "chain": "Rema 1000",
+  "product": "Lammefjordskartofler",
+  "price": 10,
+  "kg": 1.5,
+  "validFrom": "2026-10-24T22:00:00+0000",
+  "validTo": "2026-10-31T22:59:59+0000",
+  "category": "kartofler",
+  "pricePerKg": 6.67
+ },
+ {
+  "chain": "Lidl",
+  "product": "Danske gourmetkartofler",
+  "price": 10,
+  "kg": 1,
+  "validFrom": "2026-10-24T22:00:00+0000",
+  "validTo": "2026-10-31T22:59:59+0000",
+  "category": "kartofler",
+  "pricePerKg": 10
+ },
+ {
+  "chain": "Netto",
+  "product": "Samsø kartofler",
+  "price": 18,
+  "kg": 1.5,
+  "validFrom": "2026-10-16T22:00:00+0000",
+  "validTo": "2026-10-23T21:59:59+0000",
+  "category": "kartofler",
+  "pricePerKg": 12
+ },
+ {
+  "chain": "Føtex",
+  "product": "Babykartofler",
+  "price": 18,
+  "kg": 0.7,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "kartofler",
+  "pricePerKg": 25.71
+ },
+ {
+  "chain": "Bilka",
+  "product": "salling Kartofler",
+  "price": 10,
+  "kg": 0.5,
+  "validFrom": "2026-10-22T22:00:00+0000",
+  "validTo": "2026-10-29T22:59:59+0000",
+  "category": "kartofler",
+  "pricePerKg": 20
+ },
+ {
+  "chain": "Netto",
+  "product": "Mutti tomater",
+  "price": 9.97,
+  "kg": 0.4,
+  "validFrom": "2026-10-23T22:00:00+0000",
+  "validTo": "2026-10-30T22:59:59+0000",
+  "category": "tomater",
+  "pricePerKg": 24.93
+ },
+ {
+  "chain": "Føtex",
+  "product": "Mutti Polpa hakkede tomater",
+  "price": 10,
+  "kg": 0.4,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "tomater",
+  "pricePerKg": 25
+ },
+ {
+  "chain": "Netto",
+  "product": "Løgismose økologisk sødmælk",
+  "price": 15,
+  "kg": 1,
+  "validFrom": "2026-10-23T22:00:00+0000",
+  "validTo": "2026-10-30T22:59:59+0000",
+  "category": "maelk",
+  "pricePerKg": 15
+ },
+ {
+  "chain": "Netto",
+  "product": "Mammen skæreost",
+  "price": 79,
+  "kg": 0.9,
+  "validFrom": "2026-10-16T22:00:00+0000",
+  "validTo": "2026-10-23T21:59:59+0000",
+  "category": "ost",
+  "pricePerKg": 87.78
+ },
+ {
+  "chain": "Rema 1000",
+  "product": "REMA 1000 Kronekilde skæreost",
+  "price": 39,
+  "kg": 0.604,
+  "validFrom": "2026-10-24T22:00:00+0000",
+  "validTo": "2026-10-31T22:59:59+0000",
+  "category": "ost",
+  "pricePerKg": 64.57
+ },
+ {
+  "chain": "Føtex",
+  "product": "Them eller H.C. Andersen skiveost eller Nora rund ost",
+  "price": 25,
+  "kg": 0.175,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "ost",
+  "pricePerKg": 142.86
+ },
+ {
+  "chain": "Bilka",
+  "product": "H.C. Andersen skæreost",
+  "price": 65,
+  "kg": 0.72,
+  "validFrom": "2026-10-22T22:00:00+0000",
+  "validTo": "2026-10-29T22:59:59+0000",
+  "category": "ost",
+  "pricePerKg": 90.28
+ },
+ {
+  "chain": "Lidl",
+  "product": "MILBONA Mozzarella",
+  "price": 6.95,
+  "kg": 0.125,
+  "validFrom": "2026-09-29T22:00:00+0000",
+  "validTo": "2026-12-31T22:59:59+0000",
+  "category": "ost",
+  "pricePerKg": 55.6
+ },
+ {
+  "chain": "Lidl",
+  "product": "MILBONA Mozzarella",
+  "price": 12,
+  "kg": 0.25,
+  "validFrom": "2026-10-24T22:00:00+0000",
+  "validTo": "2026-10-31T22:59:59+0000",
+  "category": "ost",
+  "pricePerKg": 48
+ },
+ {
+  "chain": "Netto",
+  "product": "Dava danske frilandsæg",
+  "price": 16,
+  "kg": 0.48,
+  "validFrom": "2026-10-16T22:00:00+0000",
+  "validTo": "2026-10-23T21:59:59+0000",
+  "category": "aeg",
+  "pricePerKg": 33.33
+ },
+ {
+  "chain": "Lidl",
+  "product": "DAVA Skrabeæg",
+  "price": 20,
+  "kg": 0.6,
+  "validFrom": "2026-10-28T23:00:00+0000",
+  "validTo": "2026-10-31T22:59:59+0000",
+  "category": "aeg",
+  "pricePerKg": 33.33
+ },
+ {
+  "chain": "Rema 1000",
+  "product": "Æg",
+  "price": 30,
+  "kg": 0.6,
+  "validFrom": "2026-10-21T22:00:00+0000",
+  "validTo": "2026-10-24T21:59:59+0000",
+  "category": "aeg",
+  "pricePerKg": 50
+ },
+ {
+  "chain": "Føtex",
+  "product": "Dava skrabeæg",
+  "price": 22,
+  "kg": 0.48,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "aeg",
+  "pricePerKg": 45.83
+ },
+ {
+  "chain": "Bilka",
+  "product": "Dava danske frilandsæg",
+  "price": 25,
+  "kg": 0.6,
+  "validFrom": "2026-10-22T22:00:00+0000",
+  "validTo": "2026-10-29T22:59:59+0000",
+  "category": "aeg",
+  "pricePerKg": 41.67
+ },
+ {
+  "chain": "Netto",
+  "product": "Schulstad levebrød kernegrov rugbrød",
+  "price": 9,
+  "kg": 0.95,
+  "validFrom": "2026-10-16T22:00:00+0000",
+  "validTo": "2026-10-23T21:59:59+0000",
+  "category": "rugbrod",
+  "pricePerKg": 9.47
+ },
+ {
+  "chain": "Rema 1000",
+  "product": "REMA 1000 Solsikkerugbrød",
+  "price": 5,
+  "kg": 0.5,
+  "validFrom": "2026-10-24T22:00:00+0000",
+  "validTo": "2026-10-31T22:59:59+0000",
+  "category": "rugbrod",
+  "pricePerKg": 10
+ },
+ {
+  "chain": "Lidl",
+  "product": "MADVÆRKET Schwarzbrød",
+  "price": 4.95,
+  "kg": 0.5,
+  "validFrom": "2026-09-29T22:00:00+0000",
+  "validTo": "2026-12-31T22:59:59+0000",
+  "category": "rugbrod",
+  "pricePerKg": 9.9
+ },
+ {
+  "chain": "Føtex",
+  "product": "Softkernerugbrød",
+  "price": 20,
+  "kg": 1,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "rugbrod",
+  "pricePerKg": 20
+ },
+ {
+  "chain": "Bilka",
+  "product": "Softkernerugbrød",
+  "price": 15,
+  "kg": 1,
+  "validFrom": "2026-10-22T22:00:00+0000",
+  "validTo": "2026-10-29T22:59:59+0000",
+  "category": "rugbrod",
+  "pricePerKg": 15
+ },
+ {
+  "chain": "Lidl",
+  "product": "MADVÆRKET Grov- eller finvalsede havregryn",
+  "price": 7.95,
+  "kg": 1,
+  "validFrom": "2026-09-29T22:00:00+0000",
+  "validTo": "2026-12-31T22:59:59+0000",
+  "category": "havregryn",
+  "pricePerKg": 7.95
+ },
+ {
+  "chain": "Netto",
+  "product": "Harvest Best grøntsager",
+  "price": 9,
+  "kg": 0.07,
+  "validFrom": "2026-10-23T22:00:00+0000",
+  "validTo": "2026-10-30T22:59:59+0000",
+  "category": "frost",
+  "pricePerKg": 128.57
+ },
+ {
+  "chain": "Rema 1000",
+  "product": "REMA 1000 Lækkert & Nemt Grøntsagsblanding",
+  "price": 10,
+  "kg": 0.4,
+  "validFrom": "2026-10-17T22:00:00+0000",
+  "validTo": "2026-10-24T21:59:59+0000",
+  "category": "frost",
+  "pricePerKg": 25
+ },
+ {
+  "chain": "Lidl",
+  "product": "FRESHONA Broccoli, blomkål eller rosenkål",
+  "price": 14.95,
+  "kg": 0.75,
+  "validFrom": "2026-10-24T22:00:00+0000",
+  "validTo": "2026-10-31T22:59:59+0000",
+  "category": "broccoli",
+  "pricePerKg": 19.93
+ },
+ {
+  "chain": "Lidl",
+  "product": "FRESHONA Grønne bønner",
+  "price": 14.95,
+  "kg": 1,
+  "validFrom": "2026-10-24T22:00:00+0000",
+  "validTo": "2026-10-31T22:59:59+0000",
+  "category": "frost",
+  "pricePerKg": 14.95
+ },
+ {
+  "chain": "Lidl",
+  "product": "MADVÆRKET Piskefløde",
+  "price": 14.95,
+  "kg": 0.5,
+  "validFrom": "2026-09-29T22:00:00+0000",
+  "validTo": "2026-12-31T22:59:59+0000",
+  "category": "flode",
+  "pricePerKg": 29.9
+ },
+ {
+  "chain": "Netto",
+  "product": "Cremefine madlavning eller piske",
+  "price": 10,
+  "kg": 0.25,
+  "validFrom": "2026-10-23T22:00:00+0000",
+  "validTo": "2026-10-30T22:59:59+0000",
+  "category": "flode",
+  "pricePerKg": 40
+ },
+ {
+  "chain": "Lidl",
+  "product": "MILBONA Madlavningsjævner med fløde",
+  "price": 7.95,
+  "kg": 0.25,
+  "validFrom": "2026-09-29T22:00:00+0000",
+  "validTo": "2026-12-31T22:59:59+0000",
+  "category": "flode",
+  "pricePerKg": 31.8
+ },
+ {
+  "chain": "Føtex",
+  "product": "Cremefine madlavning",
+  "price": 10,
+  "kg": 0.25,
+  "validFrom": "2026-10-15T22:00:00+0000",
+  "validTo": "2026-10-22T21:59:59+0000",
+  "category": "flode",
+  "pricePerKg": 40
+ },
+ {
+  "chain": "Netto",
+  "product": "Dansk broccoli",
+  "price": 12,
+  "kg": 0.4,
+  "validFrom": "2026-10-16T22:00:00+0000",
+  "validTo": "2026-10-23T21:59:59+0000",
+  "category": "broccoli",
+  "pricePerKg": 30
+ },
+ {
+  "chain": "Lidl",
+  "product": "BELBAKE Hvedemel",
+  "price": 9.95,
+  "kg": 2,
+  "validFrom": "2026-05-02T22:00:00+0000",
+  "validTo": "2026-12-31T22:59:59+0000",
+  "category": "mel",
+  "pricePerKg": 4.97
+ }
+]

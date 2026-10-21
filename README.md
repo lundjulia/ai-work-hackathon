@@ -30,4 +30,17 @@ Bank connections, sign-in and money movement are approved demo simulations. Calc
 
 Deployment uses the linked Vercel project through `pnpm env:production` and `pnpm deploy:prod`. Environment sync rejects local-only URLs for production and preview.
 
+## Penny: family food budget (second app, `apps/penny`)
+
+A separate demo app for families: receipts flow in from Nexi Smart Receipt (simulated), AI sorts them, and Penny, an openly-AI mascot, cheers the family toward a savings goal. It follows the [Figma prototype](docs/design.md), keeps all state in the browser, and needs no database or keys.
+
+```sh
+pnpm install
+pnpm dev:penny
+```
+
+Open http://localhost:3002 in a phone-sized window. Demo flow: **Get started** → **Connect with Nexi** → **Allow** → on Home tap **Simulate incoming receipt**. The receipt is categorized, the weekly food budget updates, Penny cheers with a tip, and the Italy goal moves. Also see **Budget**, **Meals** (live Netto/Bilka/Føtex/Rema 1000/Lidl offers compared by kr/kg), **Penny** chat and **Goals**. Reset via Goals → Family settings → Reset demo.
+
+Optional: put `ANTHROPIC_API_KEY` in `apps/penny/.env.local` (see `.env.example`) for Claude-powered chat and categorization; without it, built-in rules keep the demo working. To try it on a phone on the same Wi-Fi: `pnpm --filter penny exec next dev --port 3002 -H 0.0.0.0`, then open `http://<computer-IP>:3002`. Details: [Penny PRD](docs/penny-prd.md), [brief](docs/brief.md), [Nexi notes](docs/nexi.md), [offers data](docs/offers.md).
+
 Event context: [intro transcript](docs/intro.md), [shared Drive folder](https://drive.google.com/drive/folders/1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi?usp=sharing), [Drive integration](docs/google-drive-mcp.md). Agent workflow: [hackathon skill](.agents/skills/hackathon/SKILL.md), [playbook](docs/hackathon_playbook.md), [requirements](PRD.md).

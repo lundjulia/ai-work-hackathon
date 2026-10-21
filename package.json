@@ -11,6 +11,7 @@
     "build": "turbo run build",
     "check-types": "turbo run check-types",
     "dev:web": "turbo run dev -F web --",
+    "dev:penny": "turbo run dev -F penny --",
     "db:push": "turbo run db:push -F @claude-impact-lab/db --",
     "db:studio": "turbo run db:studio -F @claude-impact-lab/db --",
     "db:generate": "turbo run db:generate -F @claude-impact-lab/db --",

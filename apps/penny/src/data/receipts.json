@@ -1,0 +1,1334 @@
+[
+  {
+    "id": "nx-1021-netto",
+    "merchant": "Netto Nørrebrogade",
+    "chain": "Netto",
+    "date": "2026-10-21T08:05:00+02:00",
+    "total": 186,
+    "lines": [
+      {
+        "name": "Letmælk 1L",
+        "qty": 3,
+        "kgPerUnit": 1,
+        "price": 29.85,
+        "category": "food"
+      },
+      {
+        "name": "Havregryn 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 11,
+        "category": "food"
+      },
+      {
+        "name": "Rugbrød",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 18,
+        "category": "food"
+      },
+      {
+        "name": "Bananer 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 16,
+        "category": "food"
+      },
+      {
+        "name": "Leverpostej 450 g",
+        "qty": 1,
+        "kgPerUnit": 0.45,
+        "price": 15,
+        "category": "food"
+      },
+      {
+        "name": "Æg 10 stk",
+        "qty": 1,
+        "kgPerUnit": 0.6,
+        "price": 26,
+        "category": "food"
+      },
+      {
+        "name": "Ost skiver 400 g",
+        "qty": 1,
+        "kgPerUnit": 0.4,
+        "price": 27,
+        "category": "food"
+      },
+      {
+        "name": "Agurk",
+        "qty": 1,
+        "kgPerUnit": 0.4,
+        "price": 8,
+        "category": "food"
+      },
+      {
+        "name": "Æbler 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 18,
+        "category": "food"
+      },
+      {
+        "name": "Gulerødder 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 9,
+        "category": "food"
+      },
+      {
+        "name": "Pålægssalami",
+        "qty": 1,
+        "kgPerUnit": 0.1,
+        "price": 8.15,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Quick top-up — breakfast and lunchbox basics.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1020-fotex",
+    "merchant": "Føtex Vesterbro",
+    "chain": "Føtex",
+    "date": "2026-10-20T17:25:00+02:00",
+    "total": 342,
+    "lines": [
+      {
+        "name": "Kyllingebryst 900 g",
+        "qty": 1,
+        "kgPerUnit": 0.9,
+        "price": 69.95,
+        "category": "food"
+      },
+      {
+        "name": "Laks 2 stk 250 g",
+        "qty": 1,
+        "kgPerUnit": 0.25,
+        "price": 55,
+        "category": "food"
+      },
+      {
+        "name": "Kartofler 2 kg",
+        "qty": 1,
+        "kgPerUnit": 2,
+        "price": 18,
+        "category": "food"
+      },
+      {
+        "name": "Broccoli",
+        "qty": 2,
+        "kgPerUnit": 0.4,
+        "price": 24,
+        "category": "food"
+      },
+      {
+        "name": "Letmælk 1L",
+        "qty": 4,
+        "kgPerUnit": 1,
+        "price": 43.8,
+        "category": "food"
+      },
+      {
+        "name": "Rugbrød",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 22,
+        "category": "food"
+      },
+      {
+        "name": "Skyr naturel 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 24.95,
+        "category": "food"
+      },
+      {
+        "name": "Æbler 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 25,
+        "category": "food"
+      },
+      {
+        "name": "Agurk",
+        "qty": 1,
+        "kgPerUnit": 0.4,
+        "price": 9,
+        "category": "food"
+      },
+      {
+        "name": "Pålæg skinke",
+        "qty": 1,
+        "kgPerUnit": 0.15,
+        "price": 23.3,
+        "category": "food"
+      },
+      {
+        "name": "Ost skiver 400 g",
+        "qty": 1,
+        "kgPerUnit": 0.4,
+        "price": 27,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Groceries for the next few days — mostly staples.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1019-wolt",
+    "merchant": "Wolt · Mother Pizza",
+    "chain": "Other",
+    "date": "2026-10-19T18:40:00+02:00",
+    "total": 219,
+    "lines": [
+      {
+        "name": "Pizza Margherita",
+        "qty": 2,
+        "price": 170,
+        "category": "food"
+      },
+      {
+        "name": "Levering",
+        "qty": 1,
+        "price": 49,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Monday takeaway — pizza for the family.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1019-dsb",
+    "merchant": "DSB Rejsekort",
+    "chain": "Other",
+    "date": "2026-10-19T07:45:00+02:00",
+    "total": 300,
+    "lines": [
+      {
+        "name": "Rejsekort optankning",
+        "qty": 1,
+        "price": 300,
+        "category": "transport"
+      }
+    ],
+    "category": "transport",
+    "aiNote": "Commute top-up.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1017-netto",
+    "merchant": "Netto Nørrebrogade",
+    "chain": "Netto",
+    "date": "2026-10-17T17:35:00+02:00",
+    "total": 145.8,
+    "lines": [
+      {
+        "name": "Hakket oksekød 8-12% 500 g",
+        "qty": 1,
+        "kgPerUnit": 0.5,
+        "price": 39.95,
+        "category": "food"
+      },
+      {
+        "name": "Letmælk 1L",
+        "qty": 3,
+        "kgPerUnit": 1,
+        "price": 32.85,
+        "category": "food"
+      },
+      {
+        "name": "Rugbrød",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 22,
+        "category": "food"
+      },
+      {
+        "name": "Bananer 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 16,
+        "category": "food"
+      },
+      {
+        "name": "Pasta fusilli 500 g",
+        "qty": 2,
+        "kgPerUnit": 0.5,
+        "price": 16,
+        "category": "food"
+      },
+      {
+        "name": "Pålægssalami",
+        "qty": 1,
+        "kgPerUnit": 0.15,
+        "price": 19,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Weekend groceries — staples plus fruit.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1016-netto",
+    "merchant": "Netto Valby Langgade",
+    "chain": "Netto",
+    "date": "2026-10-16T17:15:00+02:00",
+    "total": 319.8,
+    "lines": [
+      {
+        "name": "Hel kylling 1,4 kg",
+        "qty": 2,
+        "kgPerUnit": 1.4,
+        "price": 98,
+        "category": "food"
+      },
+      {
+        "name": "Ris 2 kg",
+        "qty": 1,
+        "kgPerUnit": 2,
+        "price": 25,
+        "category": "food"
+      },
+      {
+        "name": "Broccoli",
+        "qty": 2,
+        "kgPerUnit": 0.4,
+        "price": 18,
+        "category": "food"
+      },
+      {
+        "name": "Peberfrugter 3 stk",
+        "qty": 1,
+        "kgPerUnit": 0.45,
+        "price": 15,
+        "category": "food"
+      },
+      {
+        "name": "Letmælk 1L",
+        "qty": 4,
+        "kgPerUnit": 1,
+        "price": 39.8,
+        "category": "food"
+      },
+      {
+        "name": "Rugbrød",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 18,
+        "category": "food"
+      },
+      {
+        "name": "Skyr 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 20,
+        "category": "food"
+      },
+      {
+        "name": "Smør 250 g",
+        "qty": 1,
+        "kgPerUnit": 0.25,
+        "price": 22,
+        "category": "food"
+      },
+      {
+        "name": "Juice 1 L",
+        "qty": 2,
+        "kgPerUnit": 1,
+        "price": 24,
+        "category": "food"
+      },
+      {
+        "name": "Toastbrød",
+        "qty": 1,
+        "kgPerUnit": 0.5,
+        "price": 10,
+        "category": "food"
+      },
+      {
+        "name": "Tun dåse 3 pk",
+        "qty": 1,
+        "kgPerUnit": 0.42,
+        "price": 30,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Thursday restock — nice kr/kg on chicken.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1016-coffee",
+    "merchant": "Espresso House Strøget",
+    "chain": "Other",
+    "date": "2026-10-16T08:10:00+02:00",
+    "total": 45,
+    "lines": [
+      {
+        "name": "Cappuccino",
+        "qty": 1,
+        "price": 45,
+        "category": "leisure"
+      }
+    ],
+    "category": "leisure",
+    "aiNote": "Coffee to go.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1015-lidl",
+    "merchant": "Lidl Valby",
+    "chain": "Lidl",
+    "date": "2026-10-15T18:01:00+02:00",
+    "total": 109.5,
+    "lines": [
+      {
+        "name": "Kartofler 2,5 kg",
+        "qty": 1,
+        "kgPerUnit": 2.5,
+        "price": 15,
+        "category": "food"
+      },
+      {
+        "name": "Kålhoved",
+        "qty": 1,
+        "kgPerUnit": 1.2,
+        "price": 10,
+        "category": "food"
+      },
+      {
+        "name": "Linser røde 500 g",
+        "qty": 2,
+        "kgPerUnit": 0.5,
+        "price": 24,
+        "category": "food"
+      },
+      {
+        "name": "Hakkede tomater 400 g",
+        "qty": 4,
+        "kgPerUnit": 0.4,
+        "price": 18,
+        "category": "food"
+      },
+      {
+        "name": "Letmælk 1L",
+        "qty": 3,
+        "kgPerUnit": 1,
+        "price": 28.5,
+        "category": "food"
+      },
+      {
+        "name": "Rugbrød",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 14,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Smart Lidl shop — lots under 20 kr/kg.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1014-fbr",
+    "merchant": "Fætter BR Fisketorvet",
+    "chain": "Other",
+    "date": "2026-10-14T16:40:00+02:00",
+    "total": 264,
+    "lines": [
+      {
+        "name": "LEGO City sæt",
+        "qty": 1,
+        "price": 249,
+        "category": "kids"
+      },
+      {
+        "name": "Gavepapir",
+        "qty": 1,
+        "price": 15,
+        "category": "kids"
+      }
+    ],
+    "category": "kids",
+    "aiNote": "Birthday gift for a classmate.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1013-rema",
+    "merchant": "Rema 1000 Amagerbrogade",
+    "chain": "Rema 1000",
+    "date": "2026-10-13T17:22:00+02:00",
+    "total": 130,
+    "lines": [
+      {
+        "name": "Hakket oksekød 8-12% 500 g",
+        "qty": 1,
+        "kgPerUnit": 0.5,
+        "price": 45,
+        "category": "food"
+      },
+      {
+        "name": "Tortillas 8 stk",
+        "qty": 1,
+        "kgPerUnit": 0.32,
+        "price": 15,
+        "category": "food"
+      },
+      {
+        "name": "Majs dåse 340 g",
+        "qty": 2,
+        "kgPerUnit": 0.34,
+        "price": 14,
+        "category": "food"
+      },
+      {
+        "name": "Ost revet 400 g",
+        "qty": 1,
+        "kgPerUnit": 0.4,
+        "price": 30,
+        "category": "food"
+      },
+      {
+        "name": "Agurk",
+        "qty": 1,
+        "kgPerUnit": 0.4,
+        "price": 8,
+        "category": "food"
+      },
+      {
+        "name": "Æbler 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 18,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "School-week basics.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1012-dsb",
+    "merchant": "DSB Rejsekort",
+    "chain": "Other",
+    "date": "2026-10-12T09:02:00+02:00",
+    "total": 300,
+    "lines": [
+      {
+        "name": "Rejsekort optankning",
+        "qty": 1,
+        "price": 300,
+        "category": "transport"
+      }
+    ],
+    "category": "transport",
+    "aiNote": "Weekend trip to the grandparents.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1011-cinema",
+    "merchant": "Nordisk Film Biografer Palads",
+    "chain": "Other",
+    "date": "2026-10-11T15:30:00+02:00",
+    "total": 489,
+    "lines": [
+      {
+        "name": "Billet voksen",
+        "qty": 2,
+        "price": 220,
+        "category": "leisure"
+      },
+      {
+        "name": "Billet barn",
+        "qty": 2,
+        "price": 180,
+        "category": "leisure"
+      },
+      {
+        "name": "Popcorn menu",
+        "qty": 1,
+        "price": 89,
+        "category": "leisure"
+      }
+    ],
+    "category": "leisure",
+    "aiNote": "Family cinema afternoon.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1011-rema",
+    "merchant": "Rema 1000 Amagerbrogade",
+    "chain": "Rema 1000",
+    "date": "2026-10-11T10:40:00+02:00",
+    "total": 398,
+    "lines": [
+      {
+        "name": "Hakket oksekød 8-12% 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 85,
+        "category": "food"
+      },
+      {
+        "name": "Kartofler 2 kg",
+        "qty": 1,
+        "kgPerUnit": 2,
+        "price": 14,
+        "category": "food"
+      },
+      {
+        "name": "Løg 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 9,
+        "category": "food"
+      },
+      {
+        "name": "Gulerødder 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 9,
+        "category": "food"
+      },
+      {
+        "name": "Æbler 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 18,
+        "category": "food"
+      },
+      {
+        "name": "Bananer 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 16,
+        "category": "food"
+      },
+      {
+        "name": "Letmælk 1L",
+        "qty": 4,
+        "kgPerUnit": 1,
+        "price": 42,
+        "category": "food"
+      },
+      {
+        "name": "Rugbrød",
+        "qty": 2,
+        "kgPerUnit": 1,
+        "price": 36,
+        "category": "food"
+      },
+      {
+        "name": "Yoghurt 1 kg",
+        "qty": 2,
+        "kgPerUnit": 1,
+        "price": 40,
+        "category": "food"
+      },
+      {
+        "name": "Ost Danbo 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 62,
+        "category": "food"
+      },
+      {
+        "name": "Pasta 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 13,
+        "category": "food"
+      },
+      {
+        "name": "Leverpostej 450 g",
+        "qty": 1,
+        "kgPerUnit": 0.45,
+        "price": 15,
+        "category": "food"
+      },
+      {
+        "name": "Æg 15 stk",
+        "qty": 1,
+        "kgPerUnit": 0.9,
+        "price": 39,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Weekend shop — plenty of fruit and veg.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1010-fotex",
+    "merchant": "Føtex Vesterbro",
+    "chain": "Føtex",
+    "date": "2026-10-10T16:55:00+02:00",
+    "total": 290.9,
+    "lines": [
+      {
+        "name": "Kyllingelår 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 45,
+        "category": "food"
+      },
+      {
+        "name": "Squash",
+        "qty": 2,
+        "kgPerUnit": 0.3,
+        "price": 16,
+        "category": "food"
+      },
+      {
+        "name": "Peberfrugter 3 stk",
+        "qty": 1,
+        "kgPerUnit": 0.45,
+        "price": 18,
+        "category": "food"
+      },
+      {
+        "name": "Rugbrød",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 22,
+        "category": "food"
+      },
+      {
+        "name": "Mælk økologisk 1L",
+        "qty": 2,
+        "kgPerUnit": 1,
+        "price": 27.9,
+        "category": "food"
+      },
+      {
+        "name": "Is Hansens 1 L",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 45,
+        "category": "food"
+      },
+      {
+        "name": "Oksefars 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 79,
+        "category": "food"
+      },
+      {
+        "name": "Tomater 500 g",
+        "qty": 1,
+        "kgPerUnit": 0.5,
+        "price": 20,
+        "category": "food"
+      },
+      {
+        "name": "Kartofler 2 kg",
+        "qty": 1,
+        "kgPerUnit": 2,
+        "price": 18,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Weekend shop — veg-heavy, nice.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1009-ikea",
+    "merchant": "IKEA Gentofte",
+    "chain": "Other",
+    "date": "2026-10-09T14:20:00+02:00",
+    "total": 324,
+    "lines": [
+      {
+        "name": "SAMLA boks 22 L",
+        "qty": 3,
+        "price": 105,
+        "category": "home"
+      },
+      {
+        "name": "Bordlampe",
+        "qty": 1,
+        "price": 199,
+        "category": "home"
+      },
+      {
+        "name": "Kanelbolle",
+        "qty": 2,
+        "price": 20,
+        "category": "food"
+      }
+    ],
+    "category": "home",
+    "aiNote": "Home bits — storage and a lamp.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1008-netto",
+    "merchant": "Netto Nørrebrogade",
+    "chain": "Netto",
+    "date": "2026-10-08T17:48:00+02:00",
+    "total": 107.8,
+    "lines": [
+      {
+        "name": "Hakket svinekød 8-12% 500 g",
+        "qty": 1,
+        "kgPerUnit": 0.5,
+        "price": 29.95,
+        "category": "food"
+      },
+      {
+        "name": "Løg 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 9,
+        "category": "food"
+      },
+      {
+        "name": "Spaghetti 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 12,
+        "category": "food"
+      },
+      {
+        "name": "Letmælk 1L",
+        "qty": 3,
+        "kgPerUnit": 1,
+        "price": 29.85,
+        "category": "food"
+      },
+      {
+        "name": "Gulerødder 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 10,
+        "category": "food"
+      },
+      {
+        "name": "Leverpostej 450 g",
+        "qty": 1,
+        "kgPerUnit": 0.45,
+        "price": 17,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Midweek top-up — good use of Netto prices.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1007-netto",
+    "merchant": "Netto Valby Langgade",
+    "chain": "Netto",
+    "date": "2026-10-07T17:05:00+02:00",
+    "total": 339.8,
+    "lines": [
+      {
+        "name": "Hel kylling 1,4 kg",
+        "qty": 1,
+        "kgPerUnit": 1.4,
+        "price": 49,
+        "category": "food"
+      },
+      {
+        "name": "Hakket svinekød 8-12% 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 55,
+        "category": "food"
+      },
+      {
+        "name": "Kartofler 2 kg",
+        "qty": 1,
+        "kgPerUnit": 2,
+        "price": 15,
+        "category": "food"
+      },
+      {
+        "name": "Rugbrød",
+        "qty": 2,
+        "kgPerUnit": 1,
+        "price": 36,
+        "category": "food"
+      },
+      {
+        "name": "Letmælk 1L",
+        "qty": 4,
+        "kgPerUnit": 1,
+        "price": 39.8,
+        "category": "food"
+      },
+      {
+        "name": "Æg 15 stk",
+        "qty": 1,
+        "kgPerUnit": 0.9,
+        "price": 39,
+        "category": "food"
+      },
+      {
+        "name": "Smør 250 g",
+        "qty": 1,
+        "kgPerUnit": 0.25,
+        "price": 22,
+        "category": "food"
+      },
+      {
+        "name": "Bananer 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 16,
+        "category": "food"
+      },
+      {
+        "name": "Agurk",
+        "qty": 1,
+        "kgPerUnit": 0.4,
+        "price": 7,
+        "category": "food"
+      },
+      {
+        "name": "Havregryn 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 11,
+        "category": "food"
+      },
+      {
+        "name": "Ost skiver 400 g",
+        "qty": 1,
+        "kgPerUnit": 0.4,
+        "price": 35,
+        "category": "food"
+      },
+      {
+        "name": "Opvask sæbe",
+        "qty": 1,
+        "price": 15,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Weekly shop — good kr/kg choices on meat.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1006-coffee",
+    "merchant": "Espresso House Strøget",
+    "chain": "Other",
+    "date": "2026-10-06T08:15:00+02:00",
+    "total": 80,
+    "lines": [
+      {
+        "name": "Caffe latte",
+        "qty": 1,
+        "price": 48,
+        "category": "leisure"
+      },
+      {
+        "name": "Kanelsnegl",
+        "qty": 1,
+        "price": 32,
+        "category": "leisure"
+      }
+    ],
+    "category": "leisure",
+    "aiNote": "Morning latte on the go.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1005-lidl",
+    "merchant": "Lidl Valby",
+    "chain": "Lidl",
+    "date": "2026-10-05T11:02:00+02:00",
+    "total": 159,
+    "lines": [
+      {
+        "name": "Bananer 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 15,
+        "category": "food"
+      },
+      {
+        "name": "Mandariner 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 20,
+        "category": "food"
+      },
+      {
+        "name": "Yoghurt græsk 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 25,
+        "category": "food"
+      },
+      {
+        "name": "Æg 10 stk",
+        "qty": 1,
+        "kgPerUnit": 0.6,
+        "price": 28,
+        "category": "food"
+      },
+      {
+        "name": "Toastbrød",
+        "qty": 1,
+        "kgPerUnit": 0.5,
+        "price": 12,
+        "category": "food"
+      },
+      {
+        "name": "Ost Danbo 45+ 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 59,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Lidl run — cheap fruit and dairy.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1004-justeat",
+    "merchant": "Pizzeria Roma (Just Eat)",
+    "chain": "Other",
+    "date": "2026-10-04T19:12:00+02:00",
+    "total": 264,
+    "lines": [
+      {
+        "name": "Pizza Margherita",
+        "qty": 2,
+        "price": 150,
+        "category": "food"
+      },
+      {
+        "name": "Pizza Pepperoni",
+        "qty": 1,
+        "price": 85,
+        "category": "food"
+      },
+      {
+        "name": "Levering",
+        "qty": 1,
+        "price": 29,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Friday takeaway — pizza night for four.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1003-rema",
+    "merchant": "Rema 1000 Amagerbrogade",
+    "chain": "Rema 1000",
+    "date": "2026-10-03T17:30:00+02:00",
+    "total": 120.5,
+    "lines": [
+      {
+        "name": "Laks 2 stk 250 g",
+        "qty": 1,
+        "kgPerUnit": 0.25,
+        "price": 49,
+        "category": "food"
+      },
+      {
+        "name": "Kartofler 2 kg",
+        "qty": 1,
+        "kgPerUnit": 2,
+        "price": 14,
+        "category": "food"
+      },
+      {
+        "name": "Agurk",
+        "qty": 1,
+        "kgPerUnit": 0.4,
+        "price": 8,
+        "category": "food"
+      },
+      {
+        "name": "Letmælk 1L",
+        "qty": 3,
+        "kgPerUnit": 1,
+        "price": 31.5,
+        "category": "food"
+      },
+      {
+        "name": "Rugbrød",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 18,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Weekday dinner basics.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1002-dsb",
+    "merchant": "DSB Rejsekort",
+    "chain": "Other",
+    "date": "2026-10-02T07:38:00+02:00",
+    "total": 500,
+    "lines": [
+      {
+        "name": "Rejsekort optankning",
+        "qty": 1,
+        "price": 500,
+        "category": "transport"
+      }
+    ],
+    "category": "transport",
+    "aiNote": "Commute top-up.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-1001-bilka",
+    "merchant": "Bilka Hundige",
+    "chain": "Bilka",
+    "date": "2026-10-01T10:24:00+02:00",
+    "total": 699,
+    "lines": [
+      {
+        "name": "Havregryn 1 kg",
+        "qty": 2,
+        "kgPerUnit": 1,
+        "price": 23,
+        "category": "food"
+      },
+      {
+        "name": "Pasta penne 1 kg",
+        "qty": 2,
+        "kgPerUnit": 1,
+        "price": 26,
+        "category": "food"
+      },
+      {
+        "name": "Hakkede tomater 400 g",
+        "qty": 6,
+        "kgPerUnit": 0.4,
+        "price": 33,
+        "category": "food"
+      },
+      {
+        "name": "Hakket oksekød 8-12% 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 89,
+        "category": "food"
+      },
+      {
+        "name": "Frosne ærter 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 18,
+        "category": "food"
+      },
+      {
+        "name": "Smør Lurpak 250 g",
+        "qty": 2,
+        "kgPerUnit": 0.25,
+        "price": 50,
+        "category": "food"
+      },
+      {
+        "name": "Kaffe Merrild 500 g",
+        "qty": 1,
+        "kgPerUnit": 0.5,
+        "price": 45,
+        "category": "food"
+      },
+      {
+        "name": "Toiletpapir 8 rl",
+        "qty": 1,
+        "price": 39,
+        "category": "food"
+      },
+      {
+        "name": "Kyllingefilet frost 2,5 kg",
+        "qty": 1,
+        "kgPerUnit": 2.5,
+        "price": 159,
+        "category": "food"
+      },
+      {
+        "name": "Rapsolie 1 L",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 25,
+        "category": "food"
+      },
+      {
+        "name": "Mel hvede 2 kg",
+        "qty": 1,
+        "kgPerUnit": 2,
+        "price": 18,
+        "category": "food"
+      },
+      {
+        "name": "Juice appelsin 1 L",
+        "qty": 3,
+        "kgPerUnit": 1,
+        "price": 45,
+        "category": "food"
+      },
+      {
+        "name": "Frugtyoghurt 1 kg",
+        "qty": 2,
+        "kgPerUnit": 1,
+        "price": 40,
+        "category": "food"
+      },
+      {
+        "name": "Leverpostej 450 g",
+        "qty": 2,
+        "kgPerUnit": 0.45,
+        "price": 30,
+        "category": "food"
+      },
+      {
+        "name": "Opvasketabs 40 stk",
+        "qty": 1,
+        "price": 59,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Big monthly stock-up — great kr/kg on bulk.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-0930-fotex",
+    "merchant": "Føtex Vesterbro",
+    "chain": "Føtex",
+    "date": "2026-09-30T18:05:00+02:00",
+    "total": 187.9,
+    "lines": [
+      {
+        "name": "Kyllingebryst 900 g",
+        "qty": 1,
+        "kgPerUnit": 0.9,
+        "price": 69.95,
+        "category": "food"
+      },
+      {
+        "name": "Ris jasmin 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 22,
+        "category": "food"
+      },
+      {
+        "name": "Broccoli",
+        "qty": 2,
+        "kgPerUnit": 0.4,
+        "price": 24,
+        "category": "food"
+      },
+      {
+        "name": "Æbler Pink Lady",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 25,
+        "category": "food"
+      },
+      {
+        "name": "Chokolade Marabou",
+        "qty": 1,
+        "kgPerUnit": 0.2,
+        "price": 22,
+        "category": "food"
+      },
+      {
+        "name": "Skyr naturel 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 24.95,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "End-of-month shop with a little treat.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-0929-dsb",
+    "merchant": "DSB Rejsekort",
+    "chain": "Other",
+    "date": "2026-09-29T07:41:00+02:00",
+    "total": 500,
+    "lines": [
+      {
+        "name": "Rejsekort optankning",
+        "qty": 1,
+        "price": 500,
+        "category": "transport"
+      }
+    ],
+    "category": "transport",
+    "aiNote": "Monthly top-up for the commute.",
+    "source": "nexi"
+  },
+  {
+    "id": "nx-0927-netto",
+    "merchant": "Netto Nørrebrogade",
+    "chain": "Netto",
+    "date": "2026-09-27T16:12:00+02:00",
+    "total": 167.2,
+    "lines": [
+      {
+        "name": "Hakket svinekød 8-12%",
+        "qty": 2,
+        "kgPerUnit": 0.5,
+        "price": 59.9,
+        "category": "food"
+      },
+      {
+        "name": "Kartofler 2 kg",
+        "qty": 1,
+        "kgPerUnit": 2,
+        "price": 15,
+        "category": "food"
+      },
+      {
+        "name": "Gulerødder 1 kg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 10,
+        "category": "food"
+      },
+      {
+        "name": "Letmælk 1L",
+        "qty": 4,
+        "kgPerUnit": 1,
+        "price": 43.8,
+        "category": "food"
+      },
+      {
+        "name": "Rugbrød Kohberg",
+        "qty": 1,
+        "kgPerUnit": 1,
+        "price": 20,
+        "category": "food"
+      },
+      {
+        "name": "Bananer",
+        "qty": 1,
+        "kgPerUnit": 1.1,
+        "price": 18.5,
+        "category": "food"
+      }
+    ],
+    "category": "food",
+    "aiNote": "Weekend groceries — solid staples.",
+    "source": "nexi"
+  }
+]
