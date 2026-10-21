@@ -16,7 +16,7 @@ import {
   type RiskTolerance,
 } from "@/lib/view-models";
 
-/** "Autopilot suggests…" hint. Offers a one-tap reset when the user has changed the value. */
+/** "Penny suggests…" hint. Offers a one-tap reset when the user has changed the value. */
 export function Suggestion({
   children,
   changed,
@@ -146,7 +146,7 @@ export function IncomeField({ goals, suggestion, onChange }: FieldProps) {
         changed={goals.monthlyIncome !== suggested}
         onUse={() => onChange({ ...goals, monthlyIncome: suggested })}
       >
-        Autopilot suggests {formatMoney(suggested)}. {suggestion.reasons.monthlyIncome}
+        Penny suggests {formatMoney(suggested)}. {suggestion.reasons.monthlyIncome}
       </Suggestion>
     </div>
   );
@@ -245,7 +245,7 @@ export function SafetyNetField({
         changed={months !== suggested}
         onUse={() => onChange({ ...goals, safetyNetMonths: suggested })}
       >
-        Autopilot suggests {suggested} months. {suggestion.reasons.safetyNetMonths}
+        Penny suggests {suggested} months. {suggestion.reasons.safetyNetMonths}
         {currentBuffer !== undefined
           ? ` Opsparing holds ${formatMoney(currentBuffer)} today.`
           : null}
@@ -295,7 +295,7 @@ export function SavingsGoalField({ goals, suggestion, onChange }: FieldProps) {
         </div>
       </div>
       <Suggestion>
-        {suggestion.reasons.savingsGoal} Autopilot suggests {formatMoney(suggestion.goals.savingsGoal.target)}.
+        {suggestion.reasons.savingsGoal} Penny suggests {formatMoney(suggestion.goals.savingsGoal.target)}.
       </Suggestion>
     </div>
   );

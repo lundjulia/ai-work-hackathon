@@ -4,11 +4,16 @@ import { Bubble, BubbleContent } from "@claude-impact-lab/ui/components/bubble";
 import { Message, MessageContent } from "@claude-impact-lab/ui/components/message";
 import { cn } from "@claude-impact-lab/ui/lib/utils";
 import { Check, CircleAlert, LoaderCircle } from "lucide-react";
-import { useEffect, useRef } from "react";
 
 import type { TranscriptEntry } from "./use-realtime-voice";
 
 const TOOL_LABELS: Record<string, [running: string, done: string]> = {
+  get_onboarding_plan: ["Putting your plan together...", "Your starting plan is ready"],
+  propose_settings: ["Putting your plan together...", "Your plan is ready to review"],
+  show_budget: ["Checking your spending...", "Your budget is ready"],
+  show_goal_progress: ["Checking your goal...", "Your goal is ready"],
+  show_cash_forecast: ["Looking ahead...", "Your forecast is ready"],
+  show_action: ["Checking this update...", "Your update is ready"],
   get_overview: ["Checking your accounts…", "Checked your accounts"],
   get_budget_status: ["Checking your budget…", "Checked your budget"],
   get_action_items: ["Looking at your action items…", "Looked at your action items"],
@@ -18,7 +23,7 @@ const TOOL_LABELS: Record<string, [running: string, done: string]> = {
 };
 
 function ToolChip({ name, state }: { name: string; state: "running" | "done" | "error" }) {
-  const [running, done] = TOOL_LABELS[name] ?? [`Using ${name}…`, `Used ${name}`];
+  const [running, done] = TOOL_LABELS[name] ?? ["Checking that for you...", "Checked"];
   const Icon = state === "running" ? LoaderCircle : state === "done" ? Check : CircleAlert;
   return (
     <div className="flex justify-start">
@@ -29,20 +34,15 @@ function ToolChip({ name, state }: { name: string; state: "running" | "done" | "
         )}
       >
         <Icon className={cn("size-3.5", state === "running" && "animate-spin")} />
-        {state === "error" ? `${done} (failed)` : state === "running" ? running : done}
+        {state === "error" ? "I couldn't check that. Please try again." : state === "running" ? running : done}
       </span>
     </div>
   );
 }
 
 export function VoiceTranscript({ entries }: { entries: TranscriptEntry[] }) {
-  const endRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [entries]);
-
   return (
-    <div className="flex flex-col gap-3" aria-live="polite" aria-label="Conversation transcript">
+    <div className="flex flex-col gap-3" aria-label="Conversation with Penny">
       {entries.map((e) => {
         if (e.kind === "tool") return <ToolChip key={`tool-${e.id}`} name={e.name} state={e.state} />;
         if (e.kind === "user" && !e.text && !e.final) {
@@ -68,7 +68,6 @@ export function VoiceTranscript({ entries }: { entries: TranscriptEntry[] }) {
           </Message>
         );
       })}
-      <div ref={endRef} />
     </div>
   );
 }

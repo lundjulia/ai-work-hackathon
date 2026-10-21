@@ -1,141 +1,15 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>Money on autopilot | Hackathon presentation</title>
-  <meta name="provenance" content="Unvetted Synthetic">
-  <!--
-    Working name: Autopilot. Product name has not been selected.
-    Agent-authored pitch. No human curation attestation recorded.
-    Candidate evidence slots: demo-evidence-slot, demo-evidence-caption,
-    candidate-evidence and candidate-link. Main thread updates these after verification.
-  -->
-  <link rel="stylesheet" href="deck.css">
-  <style>
-    :root {
-      --paper: #f5f4ec;
-      --ink: #173c35;
-      --muted: #586b61;
-      --accent: #17674f;
-      --line: #c7d2c7;
-      --dark: #123e34;
-      --light: #d9edb3;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-  </style>
-  <script src="deck.js" defer></script>
-</head>
-<body>
-  <main aria-label="Presentation">
-    <section class="slide slide--dark" data-slide aria-labelledby="problem-heading">
-      <p class="eyebrow">Autopilot / Working name / 21 October 2026</p>
-      <div>
-        <h1 id="problem-heading">Money on autopilot.</h1>
-        <p class="lead">Your salary, spending and investments live in different apps. Keeping them aligned takes attention.</p>
-      </div>
-      <div class="rule meta">
-        <span>For people managing money across banks</span>
-        <span>Problem hypothesis, illustrated by a fictional Danish persona</span>
-      </div>
-    </section>
-
-    <section class="slide" data-slide aria-labelledby="promise-heading">
-      <p class="eyebrow">The promise</p>
-      <div class="columns">
-        <div>
-          <h2 id="promise-heading" class="measure">Go live your life.</h2>
-          <p class="lead">Set your goals once. The daily agent is designed to contact you when there is something to act on.</p>
-          <p class="note">Intended product behavior. Daily automation and notification delivery still need end-to-end verification.</p>
-        </div>
-        <ol class="steps">
-          <li><strong>Connect your finances</strong><span>Danske Bank, Revolut and Saxo in one overview.</span></li>
-          <li><strong>Choose what matters</strong><span>Budgets, risk tolerance, a safety net and a savings goal.</span></li>
-          <li><strong>Review an action when needed</strong><span>Approve, dismiss or ask why. You keep the decision.</span></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="slide" data-slide aria-labelledby="demo-heading">
-      <p class="eyebrow">The intended demo</p>
-      <div class="columns">
-        <div>
-          <h2 id="demo-heading">Meet Sofie.</h2>
-          <ol class="steps">
-            <li><strong>Sign in and connect</strong><span>Import synthetic accounts through demo consent screens.</span></li>
-            <li><strong>Set a goal, then skip ahead</strong><span>Review the overview and trigger a daily run.</span></li>
-            <li><strong>Act on the result</strong><span>Review a budget alert and approve a simulated savings transfer.</span></li>
-          </ol>
-          <p class="note">Voice question, if live-verified: "Can I afford a weekend in Lisbon next month?"</p>
-        </div>
-        <figure class="preview">
-          <div class="preview-slot" id="demo-evidence-slot">
-            <span>Candidate walkthrough pending</span>
-            <strong>One overview. A specific action.</strong>
-            <p>The integrated demo is being verified.</p>
-          </div>
-          <figcaption id="demo-evidence-caption">Synthetic Danish accounts. Transfers change demo state only. Candidate screenshot and public link pending.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="slide" data-slide aria-labelledby="mechanism-heading">
-      <p class="eyebrow">How it works</p>
-      <h2 id="mechanism-heading">Code calculates.<br>Claude will prioritize.</h2>
-      <div class="columns columns--equal">
-        <div class="card">
-          <span class="evidence-label">Implemented calculation layer</span>
-          <h3>Amounts come from account data.</h3>
-          <p>Code computes budgets, cash flow, safety-net coverage and surplus. Refinancing estimates use stated sample assumptions.</p>
-          <p class="note">Synthetic bank fixtures feed the finance engine.</p>
-        </div>
-        <div class="card card--tint">
-          <span class="evidence-label">Intended agent role</span>
-          <h3>Explain what deserves attention.</h3>
-          <p>Claude selects and explains actions using the calculated results. It must use those amounts.</p>
-          <p class="note">A real Claude daily run is pending API-key configuration and verification.</p>
-        </div>
-      </div>
-      <p class="note">Next.js PWA with Turso state. gpt-realtime voice uses server-issued ephemeral credentials; live voice remains unverified.</p>
-    </section>
-
-    <section class="slide" data-slide aria-labelledby="evidence-heading">
-      <p class="eyebrow">What this prototype proves</p>
-      <h2 id="evidence-heading">Evidence, with its limits.</h2>
-      <div class="columns columns--equal">
-        <div class="card">
-          <span class="evidence-label">Observed so far</span>
-          <h3>Local scaffold checks pass.</h3>
-          <p id="candidate-evidence">The app shell, sign-in mock and routes passed local smoke checks. The integrated finance workflow is under test. A verified demo candidate is still pending.</p>
-          <p class="note">Source: recorded scaffold checks in status.md. No measured user outcomes yet.</p>
-        </div>
-        <div class="card card--tint">
-          <span class="evidence-label">Approved demo mocks</span>
-          <h3>Synthetic connections and money.</h3>
-          <p>Sign-in and bank consent are mocked. Danske Bank, Revolut and Saxo data are fixtures. Approved transfers update demo balances only.</p>
-          <p class="note">Live bank sync and real payments are outside this demo. Live Claude, voice and notification checks remain pending.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide slide--dark" data-slide aria-labelledby="closing-heading">
-      <p class="eyebrow">Proposed 30-day impact plan</p>
-      <h2 id="closing-heading">Does it give time back?</h2>
-      <div class="columns">
-        <p class="lead">Test with five people who manage money across banks. Measure useful alerts and weekly money-admin time.</p>
-        <div>
-          <p>Week 1: recruit volunteers and record their current routine.</p>
-          <p>Week 2: test advice against participant-checked data.</p>
-          <p>Week 3: log useful, dismissed and incorrect alerts.</p>
-          <p>Week 4: compare weekly minutes with the baseline and decide what to change.</p>
-        </div>
-      </div>
-      <div class="rule">
-        <p class="closing-link">Help us test the first useful action.</p>
-        <p class="note" id="candidate-link">Pilot proposal, not a measured result. Public demo link pending.</p>
-      </div>
-    </section>
-  </main>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="provenance" content="Unvetted Synthetic"><title>Penny | Calmer money days</title><link rel="stylesheet" href="deck.css"><script src="deck.js" defer></script>
+<style>
+:root{--paper:#F2F2EE;--ink:#14231C;--muted:#6B746E;--accent:#1F4A39;--line:#DADAD5;--dark:#1F4A39;--light:#A8D5AF}
+.slide{position:relative}.slide--dark h1,.slide--dark h2{color:var(--paper)}.brand-name{color:#F2C24B;font-weight:750;font-size:1.8rem}.mascot{width:min(100%,340px);height:360px;object-fit:contain;margin:auto;display:block}.hero-stat{font-size:clamp(7rem,17vw,15rem);line-height:.95;letter-spacing:-.08em;color:var(--accent);font-weight:750;margin:0 0 .1em}.stat-caption{font-size:clamp(1.2rem,2.1vw,2rem);max-width:25ch}.dot-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:7px;max-width:230px;margin:1.2rem 0}.dot-grid i{display:block;width:100%;aspect-ratio:1;border-radius:50%;background:#DADAD5}.dot-grid i.literate{background:#1F4A39}.card{border:0;border-radius:20px;background:#fff}.card--tint{background:#DCEBDD}.tag{display:inline-block;padding:.4rem .85rem;border-radius:99px;font-size:.82rem;background:#DCEBDD;color:#1F4A39}.pill{color:#F2C24B;font-size:clamp(1.2rem,2vw,1.8rem)}.demo-shot{height:420px;width:auto;max-width:100%;display:block;margin:auto;border-radius:24px;box-shadow:0 12px 40px #14231c18}.demo-link{font-size:1rem}.outcome{padding:1.4rem 0;border-top:1px solid var(--line)}.outcome h3{margin-bottom:.25rem;font-size:clamp(1.4rem,2.6vw,2.3rem)}.outcome p{margin:0;color:var(--muted)}.pilot{font-size:clamp(3.4rem,7vw,6.8rem);letter-spacing:-.06em;line-height:1;font-weight:700;margin-bottom:.25em;color:#F2C24B}.slide--dark .steps span{color:#DCEBDD}.slide--dark .steps li{border-color:#60806d}.slide--dark .steps li::before{color:#F2C24B}.source{font-size:.78rem}#why-heading{font-size:clamp(2.4rem,4.2vw,4.3rem)}.footer{display:flex;justify-content:space-between;align-items:end;gap:1rem}.footer span{white-space:nowrap}
+@media(max-width:760px){.mascot{height:220px}.demo-shot{height:330px}.dot-grid{max-width:260px;gap:6px}.hero-stat{font-size:7rem}}
+@media print{.mascot{height:75mm}.demo-shot{height:100mm}.hero-stat{font-size:100pt}.pilot{font-size:48pt}.dot-grid{max-width:60mm;gap:2mm}.slide--dark .steps span{color:#333}.brand-name,.pill,.pilot{color:#1F4A39}}
+</style></head><body><main aria-label="Penny presentation">
+<section class="slide slide--dark" data-slide aria-labelledby="problem-heading"><p class="eyebrow">Claude Impact Lab · The person</p><div class="columns"><div><p class="brand-name">Penny</p><h1 id="problem-heading">Calmer<br>money days.</h1><p class="lead">Busy families lose track of spending. Money becomes another source of stress.</p></div><img class="mascot" src="penny.svg" alt="Penny, our friendly AI money coach"></div><div class="rule footer note"><p>For parents who want control without studying personal finance.</p><span>01 / 06</span></div></section>
+<section class="slide" data-slide aria-labelledby="why-heading"><p class="eyebrow">Why it matters</p><div class="columns"><div><p class="hero-stat">33%</p><p class="stat-caption">of adults worldwide met the survey's financial-literacy threshold.</p></div><div><h2 id="why-heading">Everyday money<br>should make sense.</h2><div class="dot-grid" role="img" aria-label="33 out of 100 adults met the survey threshold"></div><p class="note">The 2014 survey tested basic financial concepts.<br>Global context, not a Danish family statistic.</p></div></div><div class="rule footer"><p class="note source">Source: <a href="https://gflec.org/wp-content/uploads/2015/11/3313-Finlit_Report_FINAL-5.11.16.pdf" target="_blank" rel="noopener">S&amp;P Global FinLit Survey report</a>, 2015. Over 150,000 adults in more than 140 countries.</p><span class="note">02 / 06</span></div></section>
+<section class="slide" data-slide aria-labelledby="product-heading"><p class="eyebrow">The product</p><h2 id="product-heading">Ask Penny.<br>Understand your next step.</h2><div class="columns columns--equal"><div class="card"><h3>Start with your family's plan.</h3><p>Set a budget, a buffer and a savings goal. Ask about your money in everyday language.</p><span class="tag">Food spending is our first use case</span></div><div class="card card--tint"><h3>Get an answer you can check.</h3><p>Claude explains your finances alongside calculated budget and goal cards. You confirm changes.</p><span class="tag">Bank and loan insights extend the plan</span></div></div><div class="rule footer"><p class="note">Our aim: Penny checks your finances and contacts you when something needs attention.</p><span class="note">03 / 06</span></div></section>
+<section class="slide" data-slide aria-labelledby="demo-heading"><p class="eyebrow">Live demo · 60 seconds</p><div class="columns"><div><h2 id="demo-heading">"How is our<br>grocery budget doing?"</h2><ol class="steps"><li><strong>Ask Penny by voice</strong><span>Hear an answer and see the matching budget card.</span></li><li><strong>Open a budget update</strong><span>Penny explains it using the family's saved plan.</span></li></ol><p class="demo-link"><a href="http://localhost:3001" target="_blank" rel="noopener">Open local demo ↗</a></p></div><figure class="preview"><img class="demo-shot" src="penny-live.png" alt="Actual local Penny app with voice and text controls and suggested money questions"><figcaption>Actual local app, captured 21 October 2026.</figcaption></figure></div><div class="rule footer"><p class="note">Synthetic financial data. Bank/Nexi connections and demo events are simulated. No real money moves.</p><span class="note">04 / 06</span></div></section>
+<section class="slide" data-slide aria-labelledby="outcome-heading"><p class="eyebrow">The change we want</p><h2 id="outcome-heading">Less stress.<br>More control.</h2><div class="columns columns--equal"><div class="outcome"><h3>Understand what's left.</h3><p>Know what the family can spend and why.</p></div><div class="outcome"><h3>Make progress together.</h3><p>Choose practical changes toward a trip, a home or a savings buffer.</p></div></div><div class="rule footer"><p class="note">Intended outcomes. Tonight's prototype demonstrates conversation, saved plans and contextual budget cards. Family impact is still to be tested.</p><span class="note">05 / 06</span></div></section>
+<section class="slide slide--dark" data-slide aria-labelledby="next-heading"><p class="eyebrow">Our 30-day impact plan · Owner: Julia</p><div class="columns"><div><h2 id="next-heading">Test with<br>real families.</h2><p class="pilot">5 families</p><p class="lead">Target: at least 3 would use Penny regularly, with evidence of what helps.</p></div><ol class="steps"><li><strong>Weeks 1–2 · First real-world test</strong><span>Set a grocery budget, try simulated receipts and explore a savings goal. Check understanding and money stress.</span></li><li><strong>Weeks 3–4 · Improve and decide</strong><span>Fix confusing suggestions. Compare with the baseline and decide what to build next.</span></li></ol></div><div class="rule footer"><p class="pill">Help us find pilot families and a receipt-integration partner.</p><span class="note">06 / 06</span></div></section>
+</main><script>document.querySelector('.dot-grid').innerHTML=Array.from({length:100},(_,i)=>'<i class="'+(i<33?'literate':'')+'"></i>').join('');</script></body></html>

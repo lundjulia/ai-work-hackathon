@@ -1,5 +1,2 @@
-import { createDb } from "@claude-impact-lab/db";
-
-import { ENV } from "./env.server";
-
-export const db = createDb(ENV);
+// Demo data and state are browser-local. AI credentials stay in env.server.
+export {};

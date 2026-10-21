@@ -6,9 +6,9 @@ import { buildFinanceView } from "../finance-view";
 import type { ActionItem, ActionItemType, AutopilotRun } from "../view-models";
 import { dailyReviewPrompt } from "./autopilot-prompt";
 import { DemoError } from "./demo-errors";
-import { getDemoStore, type DemoStore, type PersistedDemoState } from "./demo-store";
+import { persistedDemoStateSchema, type PersistedDemoState } from "../demo-state-schema";
 
-export const AUTOPILOT_MODEL = "claude-sonnet-4-6";
+export const AUTOPILOT_MODEL = "claude-haiku-5-5";
 export const autopilotConfigured = () => Boolean(ENV.ANTHROPIC_API_KEY?.trim());
 
 export const reviewResultSchema = z.object({
@@ -19,7 +19,7 @@ export type DailyReview = z.infer<typeof reviewResultSchema>;
 
 export async function selectDailyCandidates(input: { date: string; goals: FinanceGoals; candidates: ActionCandidate[] }): Promise<DailyReview> {
   const apiKey = ENV.ANTHROPIC_API_KEY?.trim();
-  if (!apiKey) throw new DemoError("autopilot_not_configured", "Autopilot needs an ANTHROPIC_API_KEY on the server.", 503);
+  if (!apiKey) throw new DemoError("autopilot_not_configured", "Penny needs an ANTHROPIC_API_KEY on the server.", 503);
   const allowed = input.candidates.map((candidate) => candidate.key);
   let response: Response;
   try {
@@ -28,7 +28,7 @@ export async function selectDailyCandidates(input: { date: string; goals: Financ
       headers: { "x-api-key": apiKey, "anthropic-version": "2023-06-01", "Content-Type": "application/json" },
       signal: AbortSignal.timeout(35_000),
       body: JSON.stringify({
-        model: AUTOPILOT_MODEL, max_tokens: 512, temperature: 0, system: dailyReviewPrompt,
+        model: AUTOPILOT_MODEL, max_tokens: 512, system: dailyReviewPrompt,
         messages: [{ role: "user", content: `<daily_review>\n${JSON.stringify(input)}\n</daily_review>` }],
         tool_choice: { type: "tool", name: "submit_daily_review" },
         tools: [{
@@ -94,15 +94,25 @@ export function candidateSuppressed(candidate: ActionCandidate, state: Persisted
   });
 }
 
-export async function runAutopilot(store: DemoStore = getDemoStore(), select = selectDailyCandidates) {
-  if (select === selectDailyCandidates && !autopilotConfigured()) throw new DemoError("autopilot_not_configured", "Autopilot needs an ANTHROPIC_API_KEY on the server.", 503);
-  const original = await store.read();
+export async function runAutopilotSnapshot(snapshot: PersistedDemoState, select = selectDailyCandidates) {
+  if (select === selectDailyCandidates && !autopilotConfigured()) throw new DemoError("autopilot_not_configured", "Penny needs an ANTHROPIC_API_KEY on the server.", 503);
+  const parsed = persistedDemoStateSchema.safeParse(snapshot);
+  if (!parsed.success) throw new DemoError("invalid_snapshot", "The supplied demo snapshot is invalid.");
+  const original = { state: parsed.data };
   const existingRun = findRun(original.state);
   if (existingRun) return { state: original.state, run: existingRun, items: [] as ActionItem[] };
-  if (!original.state.connectedBanks.length) throw new DemoError("banks_required", "Connect a demo bank before running Autopilot.");
+  if (!original.state.connectedBanks.length) throw new DemoError("banks_required", "Connect a demo bank before running Penny.");
   const view = await buildFinanceView(original.state);
   const candidates = view.candidates.filter((candidate) => !candidateSuppressed(candidate, original.state));
-  const review = await select({ date: original.state.simulatedDate, goals: view.domainGoals, candidates });
+  const selected = await select({ date: original.state.simulatedDate, goals: view.domainGoals, candidates });
+  const reviewed = reviewResultSchema.safeParse(selected);
+  if (!reviewed.success || reviewed.data.candidateKeys.some((key) => !candidates.some((candidate) => candidate.key === key))) {
+    throw new DemoError("autopilot_invalid_review", "Claude returned an invalid review. No actions were saved; retry the run.", 502);
+  }
+  const review = reviewed.data;
+  if (candidates.some((candidate) => candidate.severity === "high") && !candidates.some((candidate) => candidate.severity === "high" && review.candidateKeys.includes(candidate.key))) {
+    throw new DemoError("autopilot_invalid_review", "Claude omitted an urgent finding. No actions were saved; retry the run.", 502);
+  }
   const now = new Date().toISOString();
   const runId = crypto.randomUUID();
   const items: ActionItem[] = review.candidateKeys.map((key) => {
@@ -119,11 +129,7 @@ export async function runAutopilot(store: DemoStore = getDemoStore(), select = s
   });
   const run: AutopilotRun = { id: runId, date: original.state.simulatedDate, ranAt: now, summary: review.summary, checks: ["Connected account balances", "Budget and recurring charges", "Cash safety and financial goals", "Computed investment and loan insights"], newItemCount: items.length, goalRevision: original.state.goalsRevision, engine: "claude" };
   const state = { ...original.state, runs: [run, ...original.state.runs], actions: [...items, ...original.state.actions] };
-  if (await store.compareAndSwap(original.revision, state)) return { state, run, items };
-  const latest = (await store.read()).state;
-  const completed = findRun(latest);
-  if (latest.simulatedDate === original.state.simulatedDate && latest.goalsRevision === original.state.goalsRevision && completed) {
-    return { state: latest, run: completed, items: [] as ActionItem[] };
-  }
-  throw new DemoError("review_state_changed", "The demo changed during the review. No actions were saved; run Autopilot again.", 409);
+  const checked = persistedDemoStateSchema.safeParse(state);
+  if (!checked.success) throw new DemoError("snapshot_capacity", "The demo has too many saved reviews. Reset the demo to continue.", 409);
+  return { state: checked.data, run, items };
 }

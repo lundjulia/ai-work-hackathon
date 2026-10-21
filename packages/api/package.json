@@ -9,7 +9,6 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@claude-impact-lab/db": "workspace:*",
     "@trpc/client": "catalog:",
     "@trpc/server": "catalog:",
     "zod": "catalog:"

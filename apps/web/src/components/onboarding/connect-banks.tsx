@@ -106,7 +106,7 @@ function ConsentSheet({
             {phase === "consent" ? (
               <>
                 <SheetDescription className="text-sm text-muted-foreground">
-                  Autopilot asks {bank.name} for read-only access to:
+                  Penny asks {bank.name} for read-only access to:
                 </SheetDescription>
                 <ul className="space-y-3">
                   {bank.permissions.map((p) => (
@@ -126,7 +126,7 @@ function ConsentSheet({
                 <div className="rounded-2xl bg-muted px-4 py-3 text-[13px] leading-relaxed text-muted-foreground">
                   Consent lasts {bank.consentDays} days, until{" "}
                   {formatDate(addDays(simulatedDate, bank.consentDays), "long")}
-                  . You can revoke it any time. Autopilot cannot move money.
+                  . You can revoke it any time. Penny cannot move money.
                 </div>
                 <div className="space-y-2">
                   <Button

@@ -4,6 +4,13 @@ import { useCallback, useSyncExternalStore } from "react";
 import { toast } from "sonner";
 import type { DemoResponse, DemoState } from "@/lib/demo-types";
 import { getBank, type BankId, type Goals } from "@/lib/view-models";
+import { subscribeToStateChanges } from "@/lib/state-realtime";
+import { buildFinanceView } from "@/lib/finance-view";
+import { getLocalDemoStore, type LocalDemoRecord } from "@/lib/local-demo-store";
+import { applyLocalDemoOperation } from "@/lib/demo-operations";
+import { DemoError } from "@/lib/demo-errors";
+import type { DemoOperation } from "@/lib/demo-operation-schema";
+import { reviewNotifications, type DemoEventKind } from "@/lib/demo-notifications";
 export type { DemoState } from "@/lib/demo-types";
 
 const EMPTY_STATE: DemoState = {
@@ -77,65 +84,101 @@ type Store = { response: DemoResponse; ready: boolean; error?: string };
 const INITIAL: Store = { response: EMPTY, ready: false };
 let current: Store = INITIAL;
 let loading: Promise<void> | undefined;
+let refreshPending = false;
+let stopRealtime: (() => void) | undefined;
 let queue: Promise<unknown> = Promise.resolve();
 const listeners = new Set<() => void>();
 const emit = () => {
   for (const listener of listeners) listener();
 };
 
-async function request(
-  payload?: Record<string, unknown>,
-): Promise<DemoResponse> {
-  const response = await fetch("/api/demo", {
-    method: payload ? "POST" : "GET",
-    headers: payload ? { "Content-Type": "application/json" } : undefined,
-    body: payload ? JSON.stringify(payload) : undefined,
-    cache: "no-store",
-  });
-  let body: Record<string, unknown>;
-  try {
-    body = await response.json();
-  } catch {
-    throw new Error("Autopilot could not load your data. Try again.");
-  }
-  if (!response.ok)
-    throw new Error(
-      String(
-        body.message ?? body.error ?? "Could not reach Autopilot. Try again.",
-      ),
-    );
-  current = { response: body as DemoResponse, ready: true };
+let configured: boolean | undefined;
+let configuring: Promise<boolean> | undefined;
+async function configuration() {
+  if (configured !== undefined) return configured;
+  configuring ??= fetch("/api/demo", { cache: "no-store" })
+    .then(async (response) => {
+      if (!response.ok) throw new Error("Could not check Penny configuration.");
+      const body = await response.json() as { configured?: { autopilot?: boolean } };
+      configured = body.configured?.autopilot === true;
+      return configured;
+    })
+    .finally(() => { configuring = undefined; });
+  return configuring;
+}
+
+async function showRecord(record: LocalDemoRecord, extra: Partial<DemoResponse> = {}): Promise<DemoResponse> {
+  const view = await buildFinanceView(record.state);
+  // An async view can finish after another tab saved newer state.
+  const latest = await getLocalDemoStore().read();
+  if (latest.revision !== record.revision) return showRecord(latest);
+  const response: DemoResponse = {
+    state: record.state, home: view.home, accounts: view.accounts, suggestion: view.suggestion,
+    configured: { autopilot: configured === true }, ...extra,
+  };
+  current = { response, ready: true };
   emit();
-  return current.response;
+  return response;
 }
 
 export function refreshDemoState() {
-  if (loading) return loading;
-  loading = request()
+  if (loading) { refreshPending = true; return loading; }
+  loading = Promise.resolve().then(() => getLocalDemoStore().read())
+    .then((record) => showRecord(record))
     .then(() => {})
     .catch((error: unknown) => {
-      current = {
-        ...current,
-        ready: true,
-        error:
-          error instanceof Error
-            ? error.message
-            : "Could not load your accounts.",
-      };
+      current = { ...current, ready: true, error: error instanceof Error ? error.message : "Could not load your accounts." };
       emit();
     })
     .finally(() => {
       loading = undefined;
+      if (refreshPending) { refreshPending = false; void refreshDemoState(); }
     });
   return loading;
 }
 
-function mutate(payload: Record<string, unknown>) {
-  const result = queue.then(() => request(payload));
+async function review(): Promise<DemoResponse> {
+  const store = getLocalDemoStore();
+  const before = await store.read();
+  // This request holds no browser lock. Another tab can keep editing during the review.
+  const response = await fetch("/api/demo", {
+    method: "POST", headers: { "Content-Type": "application/json" }, cache: "no-store",
+    body: JSON.stringify({ snapshot: before.state, operation: "runAutopilot" }),
+  });
+  const body = await response.json().catch(() => null) as DemoResponse & { error?: string } | null;
+  if (!response.ok || !body?.run) throw new Error(body?.message ?? body?.error ?? "Penny did not return a completed run.");
+  const reviewed = { ...body.state, notifications: [...reviewNotifications(body.items ?? []), ...(before.state.notifications ?? [])].slice(0, 100) } as LocalDemoRecord["state"];
+  if (!await store.compareAndSwap(before.revision, reviewed)) {
+    await showRecord(await store.read());
+    throw new DemoError("state_conflict", "Your data changed during the review. Run Penny again for the latest state.", 409);
+  }
+  return showRecord(await store.read(), { run: body.run, items: body.items ?? [] });
+}
+
+function mutate(payload: DemoOperation): Promise<DemoResponse> {
+  const result = queue.then(async () => {
+    if (payload.operation === "runAutopilot") return review();
+    const record = await getLocalDemoStore().mutate((state) => applyLocalDemoOperation(state, payload));
+    const saved = await showRecord(record);
+    if (payload.operation !== "completeOnboarding") return saved;
+    try {
+      if (!await configuration()) return { ...saved, message: "Your goals are saved. Penny needs a Claude API key before its first review." };
+      return await review();
+    } catch (error) {
+      const latest = await showRecord(await getLocalDemoStore().read());
+      return { ...latest, message: `Your goals are saved. ${error instanceof Error ? error.message : "The first review could not complete. Try again."}` };
+    }
+  });
   queue = result.catch(() => {});
   return result;
 }
 export const demoActions = {
+  connectNexi() { return mutate({ operation: "connectNexi" }); },
+  async triggerEvent(kind: DemoEventKind) {
+    const result = await mutate({ operation: "triggerEvent", kind });
+    return result.state.notifications![0]!;
+  },
+  readNotification(id: string) { return mutate({ operation: "readNotification", id }); },
   async connectBank(bankId: BankId) {
     const result = await mutate({ operation: "connectBank", bankId });
     return result.accounts.filter((account) => account.bankId === bankId);
@@ -156,7 +199,7 @@ export const demoActions = {
     const result = await mutate({ operation: "runAutopilot" });
     if (!result.run)
       throw new Error(
-        result.message ?? "Autopilot did not return a completed run.",
+        result.message ?? "Penny did not return a completed run.",
       );
     return { run: result.run, items: result.items ?? [] };
   },
@@ -180,14 +223,13 @@ export function reportDemoError(error: unknown) {
 }
 function subscribe(listener: () => void) {
   listeners.add(listener);
-  void refreshDemoState();
-  const refresh = () => {
-    void refreshDemoState();
-  };
-  window.addEventListener("focus", refresh);
+  if (listeners.size === 1) {
+    stopRealtime = subscribeToStateChanges(() => { void refreshDemoState(); });
+    void configuration().then(() => refreshDemoState()).catch(() => {});
+  }
   return () => {
     listeners.delete(listener);
-    window.removeEventListener("focus", refresh);
+    if (!listeners.size) { stopRealtime?.(); stopRealtime = undefined; }
   };
 }
 const getSnapshot = () => current;

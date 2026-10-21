@@ -68,7 +68,7 @@ export type Goals = {
   budgets: Record<CategoryId, number>;
 };
 
-/** Agent-proposed goals, with a one-line reason per field shown as "Autopilot suggests…". */
+/** Agent-proposed goals, with a one-line reason per field shown as "Penny suggests…". */
 export type GoalSuggestion = {
   goals: Goals;
   reasons: {

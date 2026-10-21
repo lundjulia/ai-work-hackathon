@@ -163,18 +163,12 @@ importers:
       '@claude-impact-lab/api':
         specifier: workspace:*
         version: link:../../packages/api
-      '@claude-impact-lab/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@claude-impact-lab/finance':
         specifier: workspace:*
         version: link:../../packages/finance
       '@claude-impact-lab/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@libsql/client':
-        specifier: 'catalog:'
-        version: 0.18.0
       '@swc/helpers':
         specifier: ^0.5.23
         version: 0.5.23
@@ -196,9 +190,6 @@ importers:
       babel-plugin-react-compiler:
         specifier: ^1.0.0
         version: 1.0.0
-      libsql:
-        specifier: 'catalog:'
-        version: 0.5.29
       lucide-react:
         specifier: 'catalog:'
         version: 1.61.0(@types/react@19.3.0)(react@19.3.1)
@@ -251,9 +242,6 @@ importers:
 
   packages/api:
     dependencies:
-      '@claude-impact-lab/db':
-        specifier: workspace:*
-        version: link:../db
       '@trpc/client':
         specifier: 'catalog:'
         version: 11.19.0(@trpc/server@11.19.0(typescript@6.0.3))(typescript@6.0.3)

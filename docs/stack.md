@@ -1,3 +1,7 @@
+---
+provenance: Unvetted Synthetic
+---
+
 # claude-impact-lab
 
 This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Next.js, Self, TRPC, and more.
@@ -9,8 +13,7 @@ This project was created with [Better-T-Stack](https://github.com/AmanVarshney01
 - **TailwindCSS** - Utility-first CSS for rapid UI development
 - **Shared UI package** - shadcn/ui primitives live in `packages/ui`
 - **tRPC** - End-to-end type-safe APIs
-- **Drizzle** - TypeScript-first ORM
-- **SQLite/Turso** - Database engine
+- **Browser storage** - Demo state with bundled finance fixtures; stateless AI server routes
 - **Turborepo** - Optimized monorepo build system
 
 ## Getting Started
@@ -21,31 +24,17 @@ First, install the dependencies:
 pnpm install
 ```
 
-## Database Setup
+## Local data
 
-This project uses SQLite with Drizzle ORM.
+The developer chose browser-local storage with bundled synthetic data. No database setup, migration or database credentials are required for the app. The old `packages/db` scaffold is retained unused; its commands are not part of app startup.
 
-1. Start the local SQLite database (optional):
+Run the app:
 
-```bash
-pnpm run db:local
+```sh
+pnpm dev:web
 ```
 
-2. Update your `.env` file in the `apps/web` directory with the appropriate connection details if needed.
-
-3. Apply the schema to your database:
-
-```bash
-pnpm run db:push
-```
-
-Then, run the development server:
-
-```bash
-pnpm run dev
-```
-
-Open [http://localhost:3001](http://localhost:3001) in your browser to see the fullstack application.
+Open http://localhost:3001. Each browser origin keeps its own demo state. Tabs on the same origin share local updates; separate devices do not. AI routes accept bounded, validated state snapshots and return results for the browser to commit. Live Claude and voice still require their server API keys.
 
 ## UI Customization
 
@@ -77,7 +66,7 @@ If you want to add app-specific blocks instead of shared primitives, run the sha
 
 Each app owns its environment schema in `.env.schema`. Varlock generates `src/env.ts` during installation; run `pnpm run env:generate` after changing a schema. Commit schemas, and keep secrets in ignored env files or your deployment platform.
 
-Import the generated `ENV` accessor in application code. Shared database and auth packages receive configuration or initialized clients from the application. See [Varlock's monorepo guide](https://varlock.dev/guides/monorepos/).
+Import the generated `ENV` accessor in application code. The app runtime does not initialize a database client. See [Varlock's monorepo guide](https://varlock.dev/guides/monorepos/).
 
 Bun's automatic env loading is disabled in `bunfig.toml`; the framework integration or server bootstrap loads Varlock. Node deployments must include Varlock and its dependencies alongside the app schema.
 
@@ -110,7 +99,7 @@ claude-impact-lab/
 ├── packages/
 │   ├── ui/          # Shared shadcn/ui components and styles
 │   ├── api/         # API layer / business logic
-│   └── db/          # Database schema & queries
+│   └── db/          # Unused legacy database scaffold
 ```
 
 ## Available Scripts
@@ -119,11 +108,6 @@ claude-impact-lab/
 - `pnpm run build`: Build all applications
 - `pnpm run dev:web`: Start only the web application
 - `pnpm run check-types`: Check TypeScript types across all apps
-- `pnpm run db:push`: Push schema changes to database
-- `pnpm run db:generate`: Generate database client/types
-- `pnpm run db:migrate`: Run database migrations
-- `pnpm run db:studio`: Open database studio UI
-- `pnpm run db:local`: Start the local SQLite database
 - `pnpm run deploy:setup`: Link this repo to a Vercel project (first-time setup)
 - `pnpm run dev:vercel`: Run the Vercel Services dev environment locally
 - `pnpm run env:preview`: Sync local env files to the Vercel preview environment

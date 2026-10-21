@@ -47,7 +47,7 @@ function AutopilotCard({ home }: { home: HomeVM }) {
       >
         <div className="flex items-center gap-2 text-sm opacity-80">
           <Sparkles className="size-4" />
-          Autopilot{run ? ` · ${formatDate(run.date, "weekday")}` : ""}
+          Penny{run ? ` · ${formatDate(run.date, "weekday")}` : ""}
         </div>
         <p className="mt-3 text-2xl font-semibold tracking-tight">
           {count} {count === 1 ? "thing needs" : "things need"} you
@@ -72,14 +72,14 @@ function AutopilotCard({ home }: { home: HomeVM }) {
             ? "All clear"
             : configured
               ? "Ready for your first check"
-              : "Autopilot needs setup"}
+              : "Penny needs setup"}
         </p>
         <p className="text-sm text-muted-foreground">
           {run
             ? `Checked ${formatDate(run.date, "weekday")}${formatTime(run.ranAt) ? ` at ${formatTime(run.ranAt)}` : ""}. ${run.summary}`
             : configured
               ? "Open demo controls to run your first check."
-              : "Your accounts are connected. The AI connection is needed before Autopilot can review them."}
+              : "Your accounts are connected. The AI connection is needed before Penny can review them."}
         </p>
       </div>
     </Panel>
@@ -410,7 +410,7 @@ export function HomeScreen() {
         <Panel className="space-y-4 text-center">
           <p className="font-medium">Connect a bank to get started</p>
           <p className="text-sm text-muted-foreground">
-            Autopilot needs read-only access to at least one account.
+            Penny needs read-only access to at least one account.
           </p>
           <Button
             size="lg"

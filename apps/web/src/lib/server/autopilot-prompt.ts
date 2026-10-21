@@ -3,7 +3,7 @@ const tpl = (strings: TemplateStringsArray) => strings[0]!.replace(/^ {2}/gm, ""
 
 /**
  * @integration ./autopilot.ts selectDailyCandidates, Anthropic system message
- * @invocation Anthropic messages API, claude-sonnet-4-6, forced tool, temperature 0, no extended thinking
+ * @invocation Anthropic messages API, claude-haiku-5-5, forced tool, no temperature override or extended thinking
  * @inputs A labelled JSON user message contains simulated date, goals and deterministic candidates.
  * @output submit_daily_review tool input, schema constructed at the callsite
  * @downstream The server validates keys and copies candidate fields into persisted UI action items.

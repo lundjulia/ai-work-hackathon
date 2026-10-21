@@ -1,36 +1,34 @@
 import type { NextRequest } from "next/server";
 
-import { DEMO_COOKIE, DEMO_USER_ID } from "@/lib/demo-session";
+import { checkDemoRequest, DEMO_NO_STORE_HEADERS, readBoundedJson } from "@/lib/server/demo-http";
 import { DemoError } from "@/lib/server/demo-errors";
-import { demoOperationSchema } from "@/lib/server/demo-requests";
-import { applyDemoOperation, demoResponse } from "@/lib/server/demo-service";
-import { loadDemoState } from "@/lib/server/demo-store";
+import { autopilotSnapshotRequestSchema, DEMO_SNAPSHOT_MAX_BYTES } from "@/lib/demo-state-schema";
+import { autopilotConfigured } from "@/lib/server/autopilot";
+import { reviewDemoSnapshot } from "@/lib/server/demo-service";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
-const headers = { "Cache-Control": "no-store" };
-const authorized = (request: NextRequest) => request.cookies.get(DEMO_COOKIE)?.value === DEMO_USER_ID;
+const headers = DEMO_NO_STORE_HEADERS;
 
 function failure(error: unknown) {
   if (error instanceof DemoError) return Response.json({ error: error.code, message: error.message }, { status: error.status, headers });
-  return Response.json({ error: "demo_unavailable", message: "The demo could not load or save its state. Please retry." }, { status: 503, headers });
+  return Response.json({ error: "demo_unavailable", message: "The demo could not complete its review. Please retry." }, { status: 503, headers });
 }
 
 export async function GET(request: NextRequest) {
-  if (!authorized(request)) return Response.json({ error: "not_signed_in" }, { status: 401, headers });
-  try { return Response.json(await demoResponse(await loadDemoState()), { headers }); }
+  const denied = checkDemoRequest(request);
+  if (denied) return Response.json({ error: denied.error }, { status: denied.status, headers });
+  try { return Response.json({ configured: { autopilot: autopilotConfigured() } }, { headers }); }
   catch (error) { return failure(error); }
 }
 
 export async function POST(request: NextRequest) {
-  if (!authorized(request)) return Response.json({ error: "not_signed_in" }, { status: 401, headers });
-  const origin = request.headers.get("origin");
-  if (origin && origin !== new URL(request.url).origin) return Response.json({ error: "invalid_origin" }, { status: 403, headers });
-  let body: unknown;
-  try { body = await request.json(); }
-  catch { return Response.json({ error: "invalid_request", message: "Send a JSON operation." }, { status: 400, headers }); }
-  const parsed = demoOperationSchema.safeParse(body);
+  const denied = checkDemoRequest(request);
+  if (denied) return Response.json({ error: denied.error }, { status: denied.status, headers });
+  const body = await readBoundedJson(request, DEMO_SNAPSHOT_MAX_BYTES);
+  if (!body.ok) return Response.json({ error: "invalid_request", message: body.error }, { status: body.status, headers });
+  const parsed = autopilotSnapshotRequestSchema.safeParse(body.value);
   if (!parsed.success) return Response.json({ error: "invalid_request", message: parsed.error.issues[0]?.message ?? "Invalid demo operation." }, { status: 400, headers });
-  try { return Response.json(await applyDemoOperation(parsed.data), { headers }); }
+  try { return Response.json(await reviewDemoSnapshot(parsed.data.snapshot), { headers }); }
   catch (error) { return failure(error); }
 }

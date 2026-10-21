@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Autopilot",
+  title: "Penny",
   description: "Money on autopilot: your banks, checked daily by an agent.",
-  applicationName: "Autopilot",
-  appleWebApp: { capable: true, title: "Autopilot", statusBarStyle: "default" },
+  applicationName: "Penny",
+  appleWebApp: { capable: true, title: "Penny", statusBarStyle: "default" },
   icons: { apple: "/apple-touch-icon.png" },
 };
 

@@ -42,7 +42,7 @@ export function VoiceOrb({
           type="button"
           onClick={onPress}
           disabled={disabled}
-          aria-label={active ? "End conversation" : "Start talking to Autopilot"}
+          aria-label={active ? "End conversation" : "Start talking to Penny"}
           aria-pressed={active}
           className={cn(
             "relative grid size-32 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform outline-none select-none",

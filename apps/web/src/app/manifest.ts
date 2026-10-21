@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 
-// Placeholder name and colors until branding lands.
+// Penny install metadata.
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Autopilot",
-    short_name: "Autopilot",
+    name: "Penny",
+    short_name: "Penny",
     description: "Money on autopilot: your banks, checked daily by an agent.",
     start_url: "/",
     scope: "/",

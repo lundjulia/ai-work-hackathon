@@ -28,23 +28,24 @@ import {
 import { DemoBadge } from "@/components/section";
 import { formatDate } from "@/lib/format";
 import type { ActionItem } from "@/lib/view-models";
+import type { DemoEventKind } from "@/lib/demo-notifications";
 
 async function showSystemNotification(items: ActionItem[]) {
   if (typeof window === "undefined" || !("Notification" in window)) return;
   if (Notification.permission !== "granted" || !("serviceWorker" in navigator))
     return;
   const registration = await navigator.serviceWorker.getRegistration();
-  await registration?.showNotification("Autopilot", {
+  await registration?.showNotification("Penny", {
     body: `${items.length} ${items.length === 1 ? "thing needs" : "things need"} you: ${items[0]?.title ?? ""}`,
     icon: "/icon-192.png",
     badge: "/icon-192.png",
-    data: { url: "/actions" },
+    data: { url: "/notifications" },
   });
 }
 
 /**
  * Demo "time skip": a discreet floating control that moves the simulated clock and triggers the
- * daily autopilot run through the persisted server state.
+ * daily autopilot run through a snapshot of browser-local state.
  */
 export function DemoControl() {
   const router = useRouter();
@@ -61,7 +62,7 @@ export function DemoControl() {
       const { items } = await demoActions.runAutopilot();
       setOpen(false);
       if (items.length === 0) {
-        toast("Autopilot checked everything", {
+        toast("Penny checked everything", {
           description: "Nothing needs you today. Go live your life.",
         });
         return;
@@ -73,7 +74,7 @@ export function DemoControl() {
           description: items.map((i) => i.title).join(" · "),
           icon: <Sparkles className="size-4 text-primary" />,
           duration: 8000,
-          action: { label: "View", onClick: () => router.push("/actions") },
+          action: { label: "View updates", onClick: () => router.push("/notifications") },
         },
       );
     } catch (error) {
@@ -90,6 +91,15 @@ export function DemoControl() {
     }
     setPermission(await Notification.requestPermission());
   };
+  const trigger = async (kind: DemoEventKind) => {
+    setRunning(true);
+    try {
+      await demoActions.triggerEvent(kind);
+      setOpen(false);
+      router.push("/notifications");
+    } catch (error) { reportDemoError(error); }
+    finally { setRunning(false); }
+  };
 
   return (
     <>
@@ -100,7 +110,7 @@ export function DemoControl() {
         className="absolute right-4 bottom-[calc(4.25rem+env(safe-area-inset-bottom))] z-20 flex h-9 items-center gap-1.5 rounded-full bg-foreground/85 px-3 text-xs font-medium text-background shadow-lg backdrop-blur transition hover:bg-foreground active:scale-95"
       >
         <FastForward className="size-3.5" />
-        {hydrated ? formatDate(simulatedDate, "weekday") : "Demo"}
+        Demo events
       </button>
 
       <Sheet open={open} onOpenChange={(next) => !running && setOpen(next)}>
@@ -111,14 +121,21 @@ export function DemoControl() {
           <div className="space-y-6">
             <div className="mx-auto h-1 w-10 rounded-full bg-foreground/10" />
             <div className="space-y-2">
-              <DemoBadge>Demo controls</DemoBadge>
+              <DemoBadge>Demo events</DemoBadge>
               <SheetTitle className="text-lg font-semibold">
-                Simulated date
+                Show how an update arrives
               </SheetTitle>
-              <SheetDescription className="figure text-3xl font-semibold text-foreground">
-                {formatDate(simulatedDate, "long")}
+              <SheetDescription className="text-sm">
+                Add an in-app notification, then open it to talk with Penny. These sample events do not change your finances.
               </SheetDescription>
             </div>
+            <div className="grid grid-cols-2 gap-2">
+              {([
+                ["receipt", "Nexi receipt"], ["budget", "Budget update"],
+                ["review", "Money check"], ["goal", "Savings goal"],
+              ] as const).map(([kind, label]) => <Button key={kind} variant="outline" className="h-12" disabled={running} onClick={() => { void trigger(kind); }}>{label}</Button>)}
+            </div>
+            <p className="text-xs text-muted-foreground">Simulated date: {formatDate(simulatedDate, "long")}</p>
 
             <div className="grid grid-cols-2 gap-2">
               <Button
@@ -147,7 +164,7 @@ export function DemoControl() {
 
             {!configured ? (
               <p className="text-sm text-muted-foreground">
-                Autopilot needs its AI connection before it can run. Your
+                Penny needs its AI connection before it can run. Your
                 accounts and goals are saved.
               </p>
             ) : null}
@@ -160,12 +177,12 @@ export function DemoControl() {
               {running ? (
                 <>
                   <Loader2 className="animate-spin" data-icon="inline-start" />
-                  Autopilot is reviewing…
+                  Penny is reviewing…
                 </>
               ) : (
                 <>
                   <Sparkles data-icon="inline-start" />
-                  Run autopilot now
+                  Run Penny now
                 </>
               )}
             </Button>

@@ -2,7 +2,7 @@ import { cn } from "@claude-impact-lab/ui/lib/utils";
 
 import type { BankId } from "@/lib/view-models";
 
-/** Autopilot mark: a rounded tile with a rising, steady path. Placeholder until branding lands. */
+/** Penny mark: a rounded tile with a rising, steady path. Placeholder until branding lands. */
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 40 40" aria-hidden="true" className={cn("size-10", className)}>
@@ -24,7 +24,7 @@ export function Wordmark({ className }: { className?: string }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <LogoMark className="size-8" />
-      <span className="text-base font-semibold tracking-tight">Autopilot</span>
+      <span className="text-base font-semibold tracking-tight">Penny</span>
     </span>
   );
 }

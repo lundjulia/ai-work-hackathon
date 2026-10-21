@@ -1,104 +1,69 @@
 import type { NextRequest } from "next/server";
+import { createAzureLiveSession, plausibleLiveSdp } from "@/lib/server/azure-live";
 
 import { ENV } from "@/env.server";
-import { DEMO_COOKIE } from "@/lib/demo-session";
-import { loadDemoState } from "@/lib/server/demo-store";
-import { voiceInstructions, voiceToolDefinitions } from "@/lib/voice-tools";
+import { azureRealtimeConfig } from "@/lib/server/azure-realtime";
+import { checkDemoRequest, DEMO_NO_STORE_HEADERS as noStore, readBoundedJson } from "@/lib/server/demo-http";
+import { VOICE_REQUEST_MAX_BYTES, voiceSessionRequestSchema } from "@/lib/server/voice-requests";
+import { voiceInstructions } from "@/lib/voice-tools";
 
-// Mints a short-lived OpenAI Realtime client secret for the signed-in demo user.
-// The browser uses it once to open a WebRTC call directly with OpenAI (see docs/voice.md).
-// The standard OPENAI_API_KEY never leaves the server.
+// Azure OpenAI GA WebRTC. Resource credentials stay on this server;
+// the browser receives only the SDP answer and session ID.
+function providerConfig() {
+  return azureRealtimeConfig({
+    endpoint: ENV.AZURE_OPENAI_ENDPOINT,
+    deployment: ENV.AZURE_OPENAI_REALTIME_DEPLOYMENT,
+    apiKey: ENV.AZURE_OPENAI_API_KEY,
+  });
+}
 
-const REALTIME_MODEL = "gpt-realtime-2.1";
-const VOICE = "marin";
-const SECRET_TTL_SECONDS = 120; // only needs to outlive the SDP exchange; the call keeps running after expiry
-
-const noStore = { "Cache-Control": "no-store" };
-
-/** Config probe for the UI: lets /talk show "Voice not configured" before asking for the mic. */
+/** Config probe for the assistant UI before asking for the microphone. */
 export async function GET(request: NextRequest) {
-  if (request.cookies.get(DEMO_COOKIE)?.value !== "sofie") {
-    return Response.json({ error: "not_signed_in" }, { status: 401, headers: noStore });
+  const denied = checkDemoRequest(request);
+  if (denied) {
+    return Response.json({ error: denied.error }, { status: denied.status, headers: noStore });
   }
-  return Response.json({ configured: Boolean(ENV.OPENAI_API_KEY), model: REALTIME_MODEL }, { headers: noStore });
+  const provider = providerConfig();
+  return Response.json(provider.ok
+    ? { configured: true, provider: "azure", model: provider.config.deployment }
+    : { configured: false, provider: "azure", model: provider.model, error: provider.error, message: provider.message },
+  { headers: noStore });
 }
 
 export async function POST(request: NextRequest) {
-  if (request.cookies.get(DEMO_COOKIE)?.value !== "sofie") {
-    return Response.json({ error: "not_signed_in" }, { status: 401, headers: noStore });
-  }
-  const origin = request.headers.get("origin");
-  if (origin && origin !== new URL(request.url).origin) {
-    return Response.json({ error: "invalid_origin" }, { status: 403, headers: noStore });
+  const denied = checkDemoRequest(request);
+  if (denied) {
+    return Response.json({ error: denied.error }, { status: denied.status, headers: noStore });
   }
 
-  const apiKey = ENV.OPENAI_API_KEY;
-  if (!apiKey) {
+  const input = await readBoundedJson(request, VOICE_REQUEST_MAX_BYTES);
+  if (!input.ok) {
+    return Response.json({ error: input.error }, { status: input.status, headers: noStore });
+  }
+  const parsed = voiceSessionRequestSchema.safeParse(input.value);
+  if (!parsed.success || !plausibleLiveSdp(parsed.data.sdp)) {
+    return Response.json({ error: "Expected a valid demo snapshot" }, { status: 400, headers: noStore });
+  }
+
+  const provider = providerConfig();
+  if (!provider.ok) {
     return Response.json(
-      { error: "voice_not_configured", message: "Voice not configured: OPENAI_API_KEY is not set on the server." },
+      { error: provider.error, message: provider.message },
       { status: 503, headers: noStore },
     );
   }
 
   let instructions: string;
   try {
-    instructions = voiceInstructions(await loadDemoState());
+    instructions = `You are Penny, a warm family finance voice assistant. Always speak in English, including your opening greeting, even if the user speaks Danish. You have no direct financial function tools. Delegate every financial question and settings request to the client, which uses Claude Haiku and deterministic finance tools. Do not invent or recall financial figures. Wait for the client result supplied through thinking context, then explain it briefly. The application displays the complete answer and matching cards. Say hello briefly when the session starts.
+
+The following context describes the household and tools available to the delegated assistant, not tools you can invoke yourself:
+${voiceInstructions(parsed.data.snapshot, { mode: parsed.data.mode, notificationId: parsed.data.notificationId })}`;
   } catch {
     return Response.json({ error: "financial_data_unavailable" }, { status: 503, headers: noStore });
   }
 
-  const body = {
-    expires_after: { anchor: "created_at", seconds: SECRET_TTL_SECONDS },
-    session: {
-      type: "realtime",
-      model: REALTIME_MODEL,
-      instructions,
-      output_modalities: ["audio"],
-      audio: {
-        input: {
-          noise_reduction: { type: "near_field" },
-          transcription: { model: "gpt-4o-mini-transcribe" },
-          turn_detection: { type: "semantic_vad", eagerness: "medium" },
-        },
-        output: { voice: VOICE },
-      },
-      tools: voiceToolDefinitions(),
-      tool_choice: "auto",
-    },
-  };
-
-  let res: Response;
-  try {
-    res = await fetch("https://api.openai.com/v1/realtime/client_secrets", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-      cache: "no-store",
-      signal: AbortSignal.timeout(15_000),
-    });
-  } catch {
-    return Response.json({ error: "upstream_unreachable" }, { status: 502, headers: noStore });
-  }
-
-  if (!res.ok) {
-    // Pass OpenAI's error message through (it never contains the key) to make misconfiguration visible.
-    const detail = await res.text().catch(() => "");
-    let message = detail.slice(0, 500);
-    try {
-      message = ((JSON.parse(detail) as { error?: { message?: string } }).error?.message ?? message).slice(0, 500);
-    } catch {}
-    return Response.json(
-      { error: "upstream_error", status: res.status, message },
-      { status: 502, headers: noStore },
-    );
-  }
-
-  const data = (await res.json().catch(() => null)) as { value?: unknown; expires_at?: unknown } | null;
-  if (typeof data?.value !== "string" || !data.value || typeof data.expires_at !== "number" || !Number.isFinite(data.expires_at)) {
-    return Response.json({ error: "upstream_error", message: "No client secret in response" }, { status: 502, headers: noStore });
-  }
-  return Response.json(
-    { value: data.value, expires_at: data.expires_at, model: REALTIME_MODEL },
-    { headers: noStore },
-  );
+  const session = await createAzureLiveSession(provider.config, instructions, parsed.data.sdp);
+  if (!session.ok) return Response.json({ error: "upstream_error", message: session.message, status: session.status }, { status: 502, headers: noStore });
+  return Response.json({ sdp: session.sdp, session_id: session.sessionId, model: provider.config.deployment, provider: "azure", transport: "webrtc" }, { headers: noStore });
 }

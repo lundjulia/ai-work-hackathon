@@ -1,9 +1,2 @@
-import type { Metadata } from "next";
-
-import { GoalsScreen } from "@/components/goals-screen";
-
-export const metadata: Metadata = { title: "Goals · Autopilot" };
-
-export default function GoalsPage() {
-  return <GoalsScreen />;
-}
+import { redirect } from "next/navigation";
+export default function GoalsPage() { redirect("/"); }

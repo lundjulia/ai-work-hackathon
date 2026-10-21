@@ -58,7 +58,7 @@ const TYPE_LABEL: Record<ActionItemType, string> = {
 };
 
 const AMOUNT_CAPTION: Partial<Record<ActionItemType, string>> = {
-  budget_alert: "left this month",
+  budget_alert: "spent this month",
   transfer: "to move",
   refinancing: "saved per month, after tax",
 };
@@ -80,9 +80,11 @@ export function transferConfirmation(
 export function ActionCard({
   item,
   index = 0,
+  onDecision,
 }: {
   item: ActionItem;
   index?: number;
+  onDecision?: (id: string, decision: "approved" | "dismissed") => void;
 }) {
   const accountLabel = useAccountLabel();
   const severity = SEVERITY[item.severity] ?? SEVERITY.info;
@@ -96,11 +98,12 @@ export function ActionCard({
     setPending(true);
     try {
       await demoActions.decide(item.id, "approved");
+      onDecision?.(item.id, "approved");
       if (isTransfer)
         toast.success(transferConfirmation(item, accountLabel), {
           description: "Demo only. No real money moved.",
         });
-      else toast.success("Noted. Autopilot will keep an eye on it.");
+      else toast.success("Noted. Penny will keep an eye on it.");
     } catch (error) {
       reportDemoError(error);
     } finally {
@@ -111,6 +114,7 @@ export function ActionCard({
     setPending(true);
     try {
       await demoActions.decide(item.id, "dismissed");
+      onDecision?.(item.id, "dismissed");
       toast("Dismissed", {
         action: {
           label: "Undo",
@@ -240,7 +244,7 @@ export function ActionCard({
       <div className="mt-3 flex justify-end">
         {item.feedback === "not_useful" ? (
           <span className="text-xs text-muted-foreground">
-            Thanks, Autopilot will show fewer like this
+            Thanks, Penny will show fewer like this
           </span>
         ) : (
           <button
@@ -249,7 +253,7 @@ export function ActionCard({
               try {
                 await demoActions.markNotUseful(item.id);
                 toast("Thanks for the feedback", {
-                  description: "Autopilot will tune future runs.",
+                  description: "Penny will tune future runs.",
                 });
               } catch (error) {
                 reportDemoError(error);

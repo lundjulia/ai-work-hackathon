@@ -7,7 +7,7 @@ import { signInAsDemoUser } from "./actions";
 
 const promises = [
   { icon: Landmark, text: "All your banks and investments in one place" },
-  { icon: BellRing, text: "Checked every day. We only ping you when it matters" },
+  { icon: BellRing, text: "A helpful update when something needs your attention" },
   { icon: ShieldCheck, text: "Nothing moves without your approval" },
 ];
 
@@ -28,8 +28,8 @@ export default function SignInPage() {
             autopilot.
           </h1>
           <p className="max-w-[19rem] text-base text-muted-foreground">
-            Connect your banks once. An agent looks after your money every day, so you can go live
-            your life.
+            Connect your services, then talk with Penny. She helps you understand everyday money
+            and work toward your goals.
           </p>
         </div>
 
@@ -38,7 +38,7 @@ export default function SignInPage() {
           <div className="rounded-3xl bg-card/90 p-4 shadow-xl ring-1 shadow-black/5 ring-foreground/5 backdrop-blur">
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <span className="size-2 rounded-full bg-primary" />
-              Autopilot · now
+              Penny · now
             </div>
             <p className="mt-2 text-sm font-medium">Move DKK 3,000 to your safety net?</p>
             <p className="mt-0.5 text-sm text-muted-foreground">

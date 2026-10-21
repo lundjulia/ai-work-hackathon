@@ -1,6 +1,1 @@
-export class DemoError extends Error {
-  constructor(public readonly code: string, message: string, public readonly status = 400) {
-    super(message);
-    this.name = "DemoError";
-  }
-}
+export { DemoError } from "../demo-errors";

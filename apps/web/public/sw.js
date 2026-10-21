@@ -11,7 +11,7 @@ self.addEventListener("push", (event) => {
   } catch {
     data = { body: event.data ? event.data.text() : "" };
   }
-  const title = data.title || "Autopilot";
+  const title = data.title || "Penny";
   event.waitUntil(
     self.registration.showNotification(title, {
       body: data.body || "You have new action items.",

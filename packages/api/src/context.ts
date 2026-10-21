@@ -1,5 +1,2 @@
-import type { Database } from "@claude-impact-lab/db";
-
-export type Context = {
-  db: Database;
-};
+/** App procedures do not own persistence; demo state lives in the browser. */
+export type Context = Record<string, never>;

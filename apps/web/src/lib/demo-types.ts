@@ -8,8 +8,9 @@ import type {
   HomeVM,
   Account,
 } from "./view-models";
+import type { DemoNotification } from "./demo-notifications";
 
-/** Server-owned demo state. The JSON record is an expedient persistence boundary for this single-persona demo. */
+/** Browser-owned shared state for the single-persona demo. */
 export type DemoState = {
   version: 1;
   simulatedDate: string;
@@ -19,6 +20,8 @@ export type DemoState = {
   adjustments: BalanceAdjustments;
   actions: ActionItem[];
   runs: AutopilotRun[];
+  nexiConnected?: boolean;
+  notifications?: DemoNotification[];
 };
 
 export type DemoResponse = {

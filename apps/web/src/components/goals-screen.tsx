@@ -104,7 +104,7 @@ export function GoalsScreen() {
       <header className="space-y-1">
         <h1 className="text-2xl font-semibold tracking-tight">Goals</h1>
         <p className="text-sm text-muted-foreground">
-          Autopilot checks every run against these. Change them any time.
+          Penny checks every run against these. Change them any time.
         </p>
       </header>
       {hydrated ? (

@@ -37,7 +37,7 @@ export function ActionsScreen() {
           <Sparkles className="size-3.5 text-primary" />
           {latest
             ? `Last run ${formatDate(latest.date, "weekday")}${formatTime(latest.ranAt) ? `, ${formatTime(latest.ranAt)}` : ""} · ${latest.newItemCount} new`
-            : "Autopilot has not run yet"}
+            : "Penny has not run yet"}
         </p>
       </header>
 
@@ -52,10 +52,10 @@ export function ActionsScreen() {
             </p>
             <p className="text-sm text-muted-foreground">
               {latest
-                ? "Go live your life. Autopilot will tell you when something comes up."
+                ? "Go live your life. Penny will tell you when something comes up."
                 : configured
-                  ? "Open demo controls to run Autopilot."
-                  : "Autopilot needs its AI connection before it can review your accounts."}
+                  ? "Open demo controls to run Penny."
+                  : "Penny needs its AI connection before it can review your accounts."}
             </p>
           </div>
         </div>
