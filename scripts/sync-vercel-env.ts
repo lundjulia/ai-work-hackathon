@@ -87,6 +87,10 @@ if (localKeys.length > 0) {
   console.warn(
     `Warning: ${localKeys.join(", ")} look${localKeys.length === 1 ? "s" : ""} like local-only value(s). Update them in your .env file(s) and re-run this sync if your deployed app should not point at local endpoints.`,
   );
+  if (environment !== "development") {
+    console.error(`Refusing to sync local-only configuration to Vercel ${environment}.`);
+    process.exit(1);
+  }
 }
 
 console.log(`Syncing ${env.size} env var(s) to Vercel ${environment}.`);

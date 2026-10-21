@@ -1,8 +1,11 @@
 {
   "mcpServers": {
     "google-drive": {
-      "type": "http",
-      "url": "https://drivemcp.googleapis.com/mcp/v1"
+      "command": "npx",
+      "args": ["-y", "@piotr-agier/google-drive-mcp@2.13.0"],
+      "env": {
+        "GOOGLE_DRIVE_MCP_SCOPES": "drive.readonly,drive.file"
+      }
     }
   }
 }

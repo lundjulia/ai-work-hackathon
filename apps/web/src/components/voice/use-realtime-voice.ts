@@ -106,7 +106,7 @@ export function useRealtimeVoice() {
           });
           const out = (await res.json()) as { ok: boolean; result?: unknown; error?: string };
           setTool(c.call_id, c.name, out.ok ? "done" : "error");
-          return { call_id: c.call_id, output: JSON.stringify(out.ok ? out.result : { error: out.error }) };
+          return { call_id: c.call_id, output: JSON.stringify(out) };
         } catch {
           setTool(c.call_id, c.name, "error");
           return { call_id: c.call_id, output: JSON.stringify({ error: "Tool request failed" }) };
@@ -184,6 +184,28 @@ export function useRealtimeVoice() {
     const stale = () => attempt !== attemptRef.current;
     setError(null);
     setStatus("connecting");
+
+    // Probe again on every attempt, including while the initial page probe is still pending.
+    // Missing credentials must be visible before requesting microphone access.
+    try {
+      const configRes = await fetch("/api/realtime/session", { cache: "no-store" });
+      if (stale()) return;
+      if (!configRes.ok) throw new Error("Couldn't check voice configuration. Sign in and try again.");
+      const config = (await configRes.json()) as { configured?: boolean };
+      if (stale()) return;
+      if (!config.configured) {
+        setNotConfigured(true);
+        setStatus("idle");
+        return;
+      }
+      setNotConfigured(false);
+    } catch (err) {
+      if (!stale()) {
+        setError(err instanceof Error ? err.message : "Couldn't check voice configuration.");
+        setStatus("idle");
+      }
+      return;
+    }
 
     if (!navigator.mediaDevices?.getUserMedia) {
       setError("Voice needs a secure page (HTTPS or localhost) and a browser with microphone support.");

@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   title: "Autopilot",
   description: "Money on autopilot: your banks, checked daily by an agent.",
   applicationName: "Autopilot",
-  appleWebApp: { capable: true, title: "Autopilot", statusBarStyle: "black-translucent" },
+  appleWebApp: { capable: true, title: "Autopilot", statusBarStyle: "default" },
   icons: { apple: "/apple-touch-icon.png" },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f172a",
+  themeColor: "#fafbfc",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -37,10 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} bg-muted antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} bg-[oklch(0.94_0.006_250)] antialiased dark:bg-black`}>
         <Providers>
           {/* Phone-width column, centered on desktop. */}
-          <div className="mx-auto flex h-dvh w-full max-w-md flex-col bg-background pt-[env(safe-area-inset-top)] shadow-sm">
+          <div className="relative mx-auto flex h-dvh w-full max-w-md flex-col overflow-hidden bg-background pt-[env(safe-area-inset-top)] shadow-[0_0_0_1px_rgb(0_0_0/0.04),0_20px_60px_-20px_rgb(0_0_0/0.15)]">
             {children}
           </div>
         </Providers>

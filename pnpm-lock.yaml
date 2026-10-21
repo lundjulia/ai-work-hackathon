@@ -96,6 +96,9 @@ importers:
       '@claude-impact-lab/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@claude-impact-lab/finance':
+        specifier: workspace:*
+        version: link:../../packages/finance
       '@claude-impact-lab/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -227,6 +230,8 @@ importers:
       varlock:
         specifier: 'catalog:'
         version: 1.18.0
+
+  packages/finance: {}
 
   packages/ui:
     dependencies:

@@ -9,7 +9,7 @@ import { VoiceOrb } from "./voice-orb";
 import { VoiceTranscript } from "./voice-transcript";
 
 const SUGGESTIONS = [
-  "Can I afford a weekend in Lisbon next month?",
+  "Can I afford a DKK 5,000 weekend in Lisbon next month?",
   "How is my restaurant budget doing?",
   "What should I act on today?",
 ];
@@ -27,7 +27,7 @@ export function VoicePanel() {
           </EmptyMedia>
           <EmptyTitle>Voice not configured</EmptyTitle>
           <EmptyDescription>
-            The server has no OpenAI key. Set OPENAI_API_KEY in apps/web/.env and restart to talk to Autopilot.
+            Voice is unavailable because the demo's OpenAI connection is not configured.
           </EmptyDescription>
         </EmptyHeader>
       </Empty>

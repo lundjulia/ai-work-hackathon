@@ -1,3 +1,7 @@
+---
+provenance: Unvetted Synthetic
+---
+
 # PRD: Money on autopilot
 
 Working title; product name open. Status and owners: [status.md](status.md).
@@ -44,7 +48,7 @@ A fictional Danish adult (demo persona) with an everyday account at Danske Bank,
 
 ## Proposed defaults (confirm or change)
 
-- **Database:** Turso/SQLite with Drizzle. Fixtures are seeded at the import boundary so the real calculations run on them.
+- **Database:** libSQL client against SQLite locally and Turso for deployment. The single-persona state uses one JSON record with revision-checked updates, an expedient hackathon implementation. The scaffold retains Drizzle for future normalized tables. Fixtures enter through connector imports so the real calculations run on them.
 - **Simulated clock:** a demo control advances "today" and triggers the daily run on demand. A real cron (Vercel Cron) can run the same entry point.
 - **Money movement:** read-only plus *proposed* transfers. Approving one records the decision and updates fixture balances. No payment initiation (PIS).
 
@@ -63,7 +67,7 @@ Real bank credentials or live connections (unless time allows a recorded Enable 
 
 | Question | Proposed answer |
 | -------- | --------------- |
-| Deadline (timezone), submission format, demo length, live or recorded, judging criteria | Unknown. The Drive folder could not be read (MCP auth error). Need from the developer |
-| Product name | A branding worker proposes 5 options after the scaffold |
+| Deadline (timezone), submission format, demo length, live or recorded, judging criteria | Intro transcript is available in docs/intro.md. It suggests presentations around 19:45 Copenhagen and a 30-day impact plan; exact deadline and submission still need confirmation |
+| Product name | Autopilot is the current working name; final name remains open |
 | Mortgage/loan data source | User-entered sample liability during onboarding, labelled as such (open banking does not provide it) |
 | Refinancing and tax rules | Simplified calculator with stated assumptions (current bond price/rate, fees, rentefradrag rate), verified by a research worker before the pitch |

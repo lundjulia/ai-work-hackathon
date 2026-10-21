@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 
 import { ENV } from "@/env.server";
 import { DEMO_COOKIE } from "@/lib/demo-session";
+import { loadDemoState } from "@/lib/server/demo-store";
 import { voiceInstructions, voiceToolDefinitions } from "@/lib/voice-tools";
 
 // Mints a short-lived OpenAI Realtime client secret for the signed-in demo user.
@@ -16,15 +17,19 @@ const noStore = { "Cache-Control": "no-store" };
 
 /** Config probe for the UI: lets /talk show "Voice not configured" before asking for the mic. */
 export async function GET(request: NextRequest) {
-  if (!request.cookies.get(DEMO_COOKIE)?.value) {
+  if (request.cookies.get(DEMO_COOKIE)?.value !== "sofie") {
     return Response.json({ error: "not_signed_in" }, { status: 401, headers: noStore });
   }
   return Response.json({ configured: Boolean(ENV.OPENAI_API_KEY), model: REALTIME_MODEL }, { headers: noStore });
 }
 
 export async function POST(request: NextRequest) {
-  if (!request.cookies.get(DEMO_COOKIE)?.value) {
+  if (request.cookies.get(DEMO_COOKIE)?.value !== "sofie") {
     return Response.json({ error: "not_signed_in" }, { status: 401, headers: noStore });
+  }
+  const origin = request.headers.get("origin");
+  if (origin && origin !== new URL(request.url).origin) {
+    return Response.json({ error: "invalid_origin" }, { status: 403, headers: noStore });
   }
 
   const apiKey = ENV.OPENAI_API_KEY;
@@ -35,12 +40,19 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  let instructions: string;
+  try {
+    instructions = voiceInstructions(await loadDemoState());
+  } catch {
+    return Response.json({ error: "financial_data_unavailable" }, { status: 503, headers: noStore });
+  }
+
   const body = {
     expires_after: { anchor: "created_at", seconds: SECRET_TTL_SECONDS },
     session: {
       type: "realtime",
       model: REALTIME_MODEL,
-      instructions: voiceInstructions(),
+      instructions,
       output_modalities: ["audio"],
       audio: {
         input: {
@@ -62,6 +74,7 @@ export async function POST(request: NextRequest) {
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify(body),
       cache: "no-store",
+      signal: AbortSignal.timeout(15_000),
     });
   } catch {
     return Response.json({ error: "upstream_unreachable" }, { status: 502, headers: noStore });
@@ -72,7 +85,7 @@ export async function POST(request: NextRequest) {
     const detail = await res.text().catch(() => "");
     let message = detail.slice(0, 500);
     try {
-      message = (JSON.parse(detail) as { error?: { message?: string } }).error?.message ?? message;
+      message = ((JSON.parse(detail) as { error?: { message?: string } }).error?.message ?? message).slice(0, 500);
     } catch {}
     return Response.json(
       { error: "upstream_error", status: res.status, message },
@@ -80,8 +93,8 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const data = (await res.json()) as { value?: string; expires_at?: number };
-  if (!data.value) {
+  const data = (await res.json().catch(() => null)) as { value?: unknown; expires_at?: unknown } | null;
+  if (typeof data?.value !== "string" || !data.value || typeof data.expires_at !== "number" || !Number.isFinite(data.expires_at)) {
     return Response.json({ error: "upstream_error", message: "No client secret in response" }, { status: 502, headers: noStore });
   }
   return Response.json(

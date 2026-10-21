@@ -4,32 +4,43 @@ provenance: Unvetted Synthetic
 
 # Google Drive MCP
 
-This repo configures Google's hosted Drive MCP server at `https://drivemcp.googleapis.com/mcp/v1` for Claude Code in `.mcp.json` and Codex in `.codex/config.toml`.
+This repo uses the local, third-party [`@piotr-agier/google-drive-mcp`](https://github.com/piotr-agier/google-drive-mcp) server, pinned to version `2.13.0`. Claude Code loads `.mcp.json`; Codex loads `.codex/config.toml` in a trusted repo. Node.js 18 or later and `npx` are required.
 
-The project folder is [Shared Google Drive](https://drive.google.com/drive/folders/1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi?usp=sharing), with folder ID `1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi`. Include that folder URL or ID in agent requests. The MCP configuration does not restrict access to that folder. Access follows the signed-in account's permissions and granted OAuth scopes.
+The project folder is [Claude Impact Lab](https://drive.google.com/drive/folders/1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi?usp=sharing), with ID `1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi`. Include the folder ID in agent requests. Access follows the signed-in account's permissions; configuration does not restrict the server to this folder.
 
 ## Connect
 
-Authentication is per user and is not included in git. Google's authorization server requires a registered OAuth client. A plain login without one fails with `Dynamic client registration not supported`.
+1. Enable **Google Drive API** in the Google Cloud project that owns your OAuth client.
+2. Create a **Desktop app** OAuth client. Configure the consent screen and add yourself as a test user if the app uses external testing.
+3. Save the downloaded client JSON outside the repository at `~/.config/google-drive-mcp/gcp-oauth.keys.json`.
+4. Authenticate with the same scopes used by the repo configuration:
 
-- **Codex:** trust this repo when starting Codex so its project configuration loads. The installed CLI's `mcp` subcommands do not load project configuration, so pass the server URL explicitly when checking or logging in:
+   ```sh
+   GOOGLE_DRIVE_MCP_SCOPES=drive.readonly,drive.file npx -y @piotr-agier/google-drive-mcp@2.13.0 auth
+   ```
 
-  ```sh
-  codex mcp -c 'mcp_servers.google-drive.url="https://drivemcp.googleapis.com/mcp/v1"' get google-drive
-  codex mcp -c 'mcp_servers.google-drive.url="https://drivemcp.googleapis.com/mcp/v1"' login google-drive
-  ```
+5. Restart the agent session. Approve Claude Code's project MCP entry or trust the repo in Codex when prompted.
 
-  Configure the registered client's `client_id` and, if required, `client_secret` under `[mcp_servers.google-drive.oauth]` in your private `~/.codex/config.toml` before login. Register the callback URI required by your client. See [Codex OAuth client configuration](https://learn.chatgpt.com/docs/extend/mcp#oauth-client-registration-and-callbacks). Restart the agent session after login to load the tools.
-- **Claude Code:** approve the project's `google-drive` MCP entry when prompted, then use `/mcp` to authenticate. Restart the session if the tools do not appear.
+Tokens are stored at `~/.config/google-drive-mcp/tokens.json` and refresh automatically. Keep both credential files private and out of git. Google may expire refresh tokens after seven days for OAuth apps in testing; rerun authentication when needed.
 
-  To configure an existing OAuth client without changing the shared repo configuration, add a local override:
+The requested scopes permit reading accessible Drive files and managing files authorized for this app. Additional Docs, Sheets, Slides, or Calendar scopes are not requested by this repo.
 
-  ```sh
-  claude mcp add --scope local --transport http --client-id "$GOOGLE_DRIVE_CLIENT_ID" google-drive https://drivemcp.googleapis.com/mcp/v1
-  ```
+## Verify access
 
-  Add `--client-secret` if the client requires a secret. Claude prompts for it privately. Use `--callback-port` if your client requires a fixed callback port.
+Ask the agent to run `search` with `rawQuery: true` and query:
 
-Keep client secrets and tokens out of the repository. Register redirect URIs to match your agent client's OAuth callback.
+```text
+name = 'Claude Impact Lab' and mimeType = 'application/vnd.google-apps.folder' and trashed = false
+```
 
-Verify Claude's loaded configuration with `claude mcp get google-drive`. After authentication, ask the agent to list files in the project folder to verify account access. MCP initialization and tool discovery alone do not prove access to Drive files.
+The result should include folder ID `1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi`. Then search for children with:
+
+```text
+'1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi' in parents and trashed = false
+```
+
+## Hosted Google alternative
+
+Google also offers `https://drivemcp.googleapis.com/mcp/v1`. Its [setup guide](https://developers.google.com/workspace/drive/api/guides/configure-mcp-server) requires approved Google Workspace Developer Preview access, enabled **Google Drive API** and **Drive MCP API**, and an OAuth client with **Use this client for an AI-powered agent** selected.
+
+During setup, the hosted server authenticated and exposed eight tools, but file calls returned "The caller does not have permission" even though the same account could read the project folder through Drive API. The remaining hosted-server denial is unresolved. The repo uses the local server because its MCP folder search succeeded with the same account.

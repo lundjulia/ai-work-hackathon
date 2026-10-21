@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
+
+import { GoalsScreen } from "@/components/goals-screen";
+
+export const metadata: Metadata = { title: "Goals · Autopilot" };
+
 export default function GoalsPage() {
-  return (
-    <main className="px-4 py-6">
-      <h1 className="text-2xl font-semibold">Goals</h1>
-    </main>
-  );
+  return <GoalsScreen />;
 }

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Money on autopilot | Hackathon presentation</title>
+  <meta name="provenance" content="Unvetted Synthetic">
+  <!--
+    Working name: Autopilot. Product name has not been selected.
+    Agent-authored pitch. No human curation attestation recorded.
+    Candidate evidence slots: demo-evidence-slot, demo-evidence-caption,
+    candidate-evidence and candidate-link. Main thread updates these after verification.
+  -->
+  <link rel="stylesheet" href="deck.css">
+  <style>
+    :root {
+      --paper: #f5f4ec;
+      --ink: #173c35;
+      --muted: #586b61;
+      --accent: #17674f;
+      --line: #c7d2c7;
+      --dark: #123e34;
+      --light: #d9edb3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+  </style>
+  <script src="deck.js" defer></script>
+</head>
+<body>
+  <main aria-label="Presentation">
+    <section class="slide slide--dark" data-slide aria-labelledby="problem-heading">
+      <p class="eyebrow">Autopilot / Working name / 21 October 2026</p>
+      <div>
+        <h1 id="problem-heading">Money on autopilot.</h1>
+        <p class="lead">Your salary, spending and investments live in different apps. Keeping them aligned takes attention.</p>
+      </div>
+      <div class="rule meta">
+        <span>For people managing money across banks</span>
+        <span>Problem hypothesis, illustrated by a fictional Danish persona</span>
+      </div>
+    </section>
+
+    <section class="slide" data-slide aria-labelledby="promise-heading">
+      <p class="eyebrow">The promise</p>
+      <div class="columns">
+        <div>
+          <h2 id="promise-heading" class="measure">Go live your life.</h2>
+          <p class="lead">Set your goals once. The daily agent is designed to contact you when there is something to act on.</p>
+          <p class="note">Intended product behavior. Daily automation and notification delivery still need end-to-end verification.</p>
+        </div>
+        <ol class="steps">
+          <li><strong>Connect your finances</strong><span>Danske Bank, Revolut and Saxo in one overview.</span></li>
+          <li><strong>Choose what matters</strong><span>Budgets, risk tolerance, a safety net and a savings goal.</span></li>
+          <li><strong>Review an action when needed</strong><span>Approve, dismiss or ask why. You keep the decision.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="slide" data-slide aria-labelledby="demo-heading">
+      <p class="eyebrow">The intended demo</p>
+      <div class="columns">
+        <div>
+          <h2 id="demo-heading">Meet Sofie.</h2>
+          <ol class="steps">
+            <li><strong>Sign in and connect</strong><span>Import synthetic accounts through demo consent screens.</span></li>
+            <li><strong>Set a goal, then skip ahead</strong><span>Review the overview and trigger a daily run.</span></li>
+            <li><strong>Act on the result</strong><span>Review a budget alert and approve a simulated savings transfer.</span></li>
+          </ol>
+          <p class="note">Voice question, if live-verified: "Can I afford a weekend in Lisbon next month?"</p>
+        </div>
+        <figure class="preview">
+          <div class="preview-slot" id="demo-evidence-slot">
+            <span>Candidate walkthrough pending</span>
+            <strong>One overview. A specific action.</strong>
+            <p>The integrated demo is being verified.</p>
+          </div>
+          <figcaption id="demo-evidence-caption">Synthetic Danish accounts. Transfers change demo state only. Candidate screenshot and public link pending.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="slide" data-slide aria-labelledby="mechanism-heading">
+      <p class="eyebrow">How it works</p>
+      <h2 id="mechanism-heading">Code calculates.<br>Claude will prioritize.</h2>
+      <div class="columns columns--equal">
+        <div class="card">
+          <span class="evidence-label">Implemented calculation layer</span>
+          <h3>Amounts come from account data.</h3>
+          <p>Code computes budgets, cash flow, safety-net coverage and surplus. Refinancing estimates use stated sample assumptions.</p>
+          <p class="note">Synthetic bank fixtures feed the finance engine.</p>
+        </div>
+        <div class="card card--tint">
+          <span class="evidence-label">Intended agent role</span>
+          <h3>Explain what deserves attention.</h3>
+          <p>Claude selects and explains actions using the calculated results. It must use those amounts.</p>
+          <p class="note">A real Claude daily run is pending API-key configuration and verification.</p>
+        </div>
+      </div>
+      <p class="note">Next.js PWA with Turso state. gpt-realtime voice uses server-issued ephemeral credentials; live voice remains unverified.</p>
+    </section>
+
+    <section class="slide" data-slide aria-labelledby="evidence-heading">
+      <p class="eyebrow">What this prototype proves</p>
+      <h2 id="evidence-heading">Evidence, with its limits.</h2>
+      <div class="columns columns--equal">
+        <div class="card">
+          <span class="evidence-label">Observed so far</span>
+          <h3>Local scaffold checks pass.</h3>
+          <p id="candidate-evidence">The app shell, sign-in mock and routes passed local smoke checks. The integrated finance workflow is under test. A verified demo candidate is still pending.</p>
+          <p class="note">Source: recorded scaffold checks in status.md. No measured user outcomes yet.</p>
+        </div>
+        <div class="card card--tint">
+          <span class="evidence-label">Approved demo mocks</span>
+          <h3>Synthetic connections and money.</h3>
+          <p>Sign-in and bank consent are mocked. Danske Bank, Revolut and Saxo data are fixtures. Approved transfers update demo balances only.</p>
+          <p class="note">Live bank sync and real payments are outside this demo. Live Claude, voice and notification checks remain pending.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide slide--dark" data-slide aria-labelledby="closing-heading">
+      <p class="eyebrow">Proposed 30-day impact plan</p>
+      <h2 id="closing-heading">Does it give time back?</h2>
+      <div class="columns">
+        <p class="lead">Test with five people who manage money across banks. Measure useful alerts and weekly money-admin time.</p>
+        <div>
+          <p>Week 1: recruit volunteers and record their current routine.</p>
+          <p>Week 2: test advice against participant-checked data.</p>
+          <p>Week 3: log useful, dismissed and incorrect alerts.</p>
+          <p>Week 4: compare weekly minutes with the baseline and decide what to change.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <p class="closing-link">Help us test the first useful action.</p>
+        <p class="note" id="candidate-link">Pilot proposal, not a measured result. Public demo link pending.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

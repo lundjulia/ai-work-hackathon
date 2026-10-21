@@ -29,7 +29,8 @@
     "react-dom": "catalog:",
     "sonner": "catalog:",
     "varlock": "catalog:",
-    "zod": "catalog:"
+    "zod": "catalog:",
+    "@claude-impact-lab/finance": "workspace:*"
   },
   "devDependencies": {
     "@claude-impact-lab/config": "workspace:*",

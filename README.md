@@ -1,17 +1,33 @@
-# hckthn
+---
+provenance: Unvetted Synthetic
+---
 
-[Shared Google Drive folder](https://drive.google.com/drive/folders/1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi?usp=sharing). [Google Drive MCP setup](docs/google-drive-mcp.md) for agent access.
+# Money on autopilot
 
-A hackathon template for developers and agents. Keep context in the repository, get started quickly, and adapt as the idea takes shape.
+A mobile-first finance demo for a fictional Danish user. Connect synthetic Danske Bank, Revolut and Saxo accounts, set goals, and review computed spending and cash flow. The daily Claude agent selects action items from deterministic calculations. Voice reads the same stored state through gpt-realtime tools.
 
-- [Hackathon skill](.agents/skills/hackathon/SKILL.md): coordinate main and worker threads, with guides for the [app scaffold and Vercel deploy](.agents/skills/hackathon/references/scaffold.md), [branding](.agents/skills/hackathon/references/branding.md), and a reusable HTML presentation.
-- [Hackathon playbook](docs/hackathon_playbook.md): a flexible thought scaffold for setup, ideas, planning, building, and the demo.
-- [Demo data availability](docs/demo-data-availability.md): fetchable bank data, derived insights, and realistic mock options for Danske Bank, Revolut, and Saxo. [Detailed API reference](docs/open-banking-data-support.md).
-- [AGENTS.md](AGENTS.md): coding guidelines; adapt to the project as needed.
-- [Stack and run notes](docs/stack.md): the generated Better-T-Stack app (Next.js PWA in `apps/web`, tRPC in `packages/api`, Drizzle + Turso in `packages/db`, shadcn/ui in `packages/ui`). Quick start: `pnpm install`, create `apps/web/.env` (see `apps/web/.env.schema`), `pnpm -C packages/db db:push`, `pnpm dev` (http://localhost:3001). Progress: [status.md](status.md).
+Start locally:
 
-## Get started
+```sh
+pnpm install
+pnpm dev:web
+```
 
-Use `$hackathon` (Codex) or `/hackathon` (Claude Code) in the main thread. Include the skill in worker briefs so both roles share the same workflow. Tools that do not discover repository skills can read `.agents/skills/hackathon/SKILL.md` directly.
+Open http://localhost:3001 and continue as the demo user. Configuration lives in `apps/web/.env`, with declared keys in `apps/web/.env.schema`. Local SQLite works for rehearsal; production requires a real Turso `DATABASE_URL` and `DATABASE_AUTH_TOKEN`. Add `ANTHROPIC_API_KEY` for daily runs and `OPENAI_API_KEY` for live voice. Missing AI keys leave the corresponding feature explicitly unavailable. The demo state table initializes on first signed-in API read; no schema push is needed for that table.
 
-Capture the hackathon context, sketch out `PRD.md`, and scaffold the app with the [scaffold guide](.agents/skills/hackathon/references/scaffold.md). Use an existing status document or create `status.md` when parallel work needs a shared record. Any agent can update it; the main thread reconciles requirements, changes, and evidence as work arrives.
+Useful checks:
+
+```sh
+pnpm build
+pnpm check-types
+pnpm --filter @claude-impact-lab/finance test
+pnpm exec varlock run --path apps/web -- pnpm exec tsx --test apps/web/src/lib/server/demo-backend.test.ts
+```
+
+The deck is at http://localhost:3001/pitch/index.html. [Status](status.md) records checked behavior and remaining delivery work. [Demo script](docs/demo-script.md), [finance calculations](docs/finance.md), [autopilot persistence](docs/autopilot.md), and [voice](docs/voice.md) describe the implementation and its limits.
+
+Bank connections, sign-in and money movement are approved demo simulations. Calculations run on synthetic fixture data. This app does not connect real banks or initiate real payments. The single-persona JSON state record is an expedient hackathon implementation; [autopilot notes](docs/autopilot.md) describe the durable architecture needed for multiple users.
+
+Deployment uses the linked Vercel project through `pnpm env:production` and `pnpm deploy:prod`. Environment sync rejects local-only URLs for production and preview.
+
+Event context: [intro transcript](docs/intro.md), [shared Drive folder](https://drive.google.com/drive/folders/1g5H0jGdhj13NfrhxoRa9aI-Vjjd_4aZi?usp=sharing), [Drive integration](docs/google-drive-mcp.md). Agent workflow: [hackathon skill](.agents/skills/hackathon/SKILL.md), [playbook](docs/hackathon_playbook.md), [requirements](PRD.md).

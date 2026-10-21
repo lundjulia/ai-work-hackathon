@@ -1,0 +1,14 @@
+{
+  "name": "@claude-impact-lab/finance",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Framework-free finance domain core: data model, synthetic fixtures, fixture connectors, deterministic insights.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "node --test",
+    "check-types": "tsc --noEmit"
+  }
+}
