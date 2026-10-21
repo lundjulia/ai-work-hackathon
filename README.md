@@ -7,7 +7,7 @@ A calm household budget app for families: receipts flow in from Nexi Smart Recei
 You need [Node.js 20+](https://nodejs.org) and pnpm (`npm install -g pnpm`).
 
 ```bash
-git clone https://github.com/lundjulia/ai-work-hackathon.git
+git clone -b penny-app https://github.com/lundjulia/ai-work-hackathon.git
 cd ai-work-hackathon/apps/web
 pnpm install
 pnpm dev
